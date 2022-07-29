@@ -1,0 +1,22 @@
+<table class="profile-table">
+    {{#if mode}}
+        {{#each context.rows}}
+            <tr class="profile-table__row">
+                <td class="profile-table__data profile-table__title">{{title}}</td>
+                <td class="profile-table__data profile-table__value">
+                    <input name={{name}} class="table-input" value={{value}}>
+                </td>
+            </tr>
+        {{/each}}       
+    {{else}}
+        {{#each context.rows}}
+            <tr class="profile-table__row">
+                <td class="profile-table__data profile-table__title">{{title}}</td>
+                <td class="profile-table__data profile-table__value">
+                    {{value}}
+                </td>
+            </tr>
+        {{/each}}    
+    {{/if}}   
+  </table> 
+  

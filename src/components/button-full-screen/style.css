@@ -1,0 +1,14 @@
+.button_full-screen {
+	height: 100%;
+	width: 65px;
+	background-color: $white-transparent-08;
+	border: none;
+	padding: 0;
+}
+
+.button__icon {
+	width: 28px;
+	height: 28px;
+	background-image: url("../../static/back-icon.svg");
+	margin: auto;
+}

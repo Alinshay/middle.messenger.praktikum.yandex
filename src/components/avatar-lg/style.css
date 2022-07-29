@@ -1,0 +1,10 @@
+.avatar_lg {
+	position: absolute;
+	border-radius: 50;
+	border: none;
+	background-color: transparent;
+	width: 180px;
+	height: 180px;
+	background-image: url("../../static/avatar.svg");
+	margin: -90px 210px;
+}

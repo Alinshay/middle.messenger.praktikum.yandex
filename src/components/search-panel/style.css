@@ -1,0 +1,40 @@
+.search-panel {	
+	width: 100%;
+	height: 60px;
+	background-color: $purple;
+	display: flex;
+	justify-content: space-between;
+}
+
+.search-panel__input {
+	background-image: url(../../static/search.svg);
+    background-repeat: no-repeat;
+	background-color: $white-transparent-05;
+	border: none;
+	width: 250px;
+	height: 38px;
+	border-radius: 50px;  /*константа*/
+	padding-left: 35px;
+	margin: 10px;
+}
+
+.search-panel__input::placeholder {
+	color: black;
+}
+
+.search-panel__button {
+	background-image: url(../../static/home.svg);
+	background-repeat: no-repeat;
+	width: 32px;
+	height: 32px;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	align-self: center;
+	margin: 10px;
+}
+
+
+
+
+
