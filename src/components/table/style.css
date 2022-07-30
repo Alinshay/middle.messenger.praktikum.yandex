@@ -1,0 +1,39 @@
+.profile-table {
+	border-spacing: 0px;
+	table-layout: fixed;
+	font-size: 15px;
+	border: none;
+	padding: 30px 20px 60px;
+    width: 600;
+}
+
+
+.profile-table__row {
+	display: flex;
+	box-sizing: border-box;
+	margin: 0;
+}
+
+.profile-table__data {
+	width: 50%;
+	border: none;
+	border-bottom: 1px solid $grey-light;
+	vertical-align: middle;
+	padding: 16px 0;
+}
+
+.profile-table__title {
+	text-align: left;
+}
+
+.profile-table__value {
+	text-align: right;
+	color: $grey-dark;
+}
+
+.table-input {
+	border: 1px solid $grey-light;
+	padding: 5px;
+}
+
+

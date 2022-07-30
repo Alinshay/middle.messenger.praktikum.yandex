@@ -1,0 +1,41 @@
+.message-input {
+    max-width: 900px;
+    width: 90%;
+    background-color: $white-transparent-05;
+    height: 55px;
+    margin: 10px auto;
+    border-radius: 50;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+}
+
+.message-input__input {
+    width: 840px;
+    border: none;
+    background-color: transparent;
+    padding: 0 20px;
+}
+
+.message-input__button_attach {
+    width: 32px;
+    height: 32px;
+    background-image: url("../../static/clip.svg");
+    background-repeat: no-repeat;
+    border: none;
+    align-self: center;
+    background-color: transparent;
+}
+
+.message-input__button_send {
+    width: 32px;
+    height: 32px;
+    background-repeat: no-repeat;
+    border: none;
+    align-self: center;
+    border-radius: 50;
+    background-color: black;
+    background-image: url("../../static/clip.svg");
+    color: white;
+    font-size: 15px;
+}

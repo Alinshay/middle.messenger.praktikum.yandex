@@ -1,0 +1,41 @@
+<div class="page">
+	<div class="form">
+		{{>title value='SIGN UP'}}
+		<form name="sign-up">
+			<span class="sign-in__inputs">
+				<div class="inputs__row inputs__row_with-line">
+					{{>input placeholder='Email' name='email'}}
+					{{>input placeholder='Login' name='login'}}
+					{{>input placeholder='First name' name='first_name'}}
+					{{>input placeholder='Second name' name='second_name'}}
+				</div>
+
+				<div class="inputs__row">
+					{{>input placeholder='Phone number' name='phone'}}
+					{{>input placeholder='Password' name='password'}}
+					{{>input placeholder='Repeat password' name='repeat_password'}}
+					{{>buttonMain title='Sign Up' id='sign_up'}}
+				</div>
+			</span>
+		</form>
+		{{> textWithLink text='Already Have An Account?' linkText='Sign In' linkRef='#'}}
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

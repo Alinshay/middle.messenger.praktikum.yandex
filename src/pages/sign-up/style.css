@@ -1,0 +1,11 @@
+.sign-in__inputs {
+	display: flex;
+}
+
+.inputs__row { 
+    padding: 10px 30px;
+}
+
+.inputs__row_with-line {
+	border-right: 1px solid black;
+}

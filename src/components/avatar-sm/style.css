@@ -1,0 +1,7 @@
+.avatar_sm {
+	background-color: $grey-light;
+	height: 47px;
+	width: 47px;
+	border-radius: 50%;
+	margin: 12px 0;
+}
