@@ -1,0 +1,34 @@
+<div class="chat-list">
+	{{#if mode}}	
+		{{#each context.chatList}} 
+			<button class="chat-list__item">
+				{{> avatarSm }}
+				<div class="item__info">
+					<div class="info__title info__title_search">
+						<h3>{{{name}}}</h3> 
+					</div>
+				</div>
+			</button>
+		{{/each}}
+	{{else}}
+		{{#each context.chatList}} 
+			<button class="chat-list__item">
+				{{> avatarSm }}
+				<div class="item__info">
+					<div class="info__title">
+						<h3>{{{name}}}</h3> 
+						<time class="title__last-message-time">
+							{{{time}}}
+						</time>
+					</div>
+					<div class="info__subtitle">
+						<p class="subtitle__last-message"> {{{lastMessage}}}</p>
+						{{#if badge}}
+							<span class="subtitle__message-badge"> {{{badge}}} </span>
+						{{/if}}
+					</div>
+				</div>
+			</button>
+		{{/each}}
+	{{/if}}
+</div>

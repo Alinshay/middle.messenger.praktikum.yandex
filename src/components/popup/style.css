@@ -1,0 +1,39 @@
+.background-blur {
+    background-color: rgba(0,0,0,0.4);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    z-index: 10;
+}
+
+.popup {
+    background-color: white;
+    width: 310px;
+    border-radius: 20;
+    margin: auto;
+    padding: 20px;
+}
+
+.popup__content {
+    margin: 20px;
+}
+
+.content__text {
+    text-align: center;
+}
+
+.popup button {
+    margin: auto;
+}
+
+.popup__error {
+    text-align: center;
+    color: red;
+}
+
+
+
+
+
+
