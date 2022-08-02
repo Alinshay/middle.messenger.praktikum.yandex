@@ -30,7 +30,7 @@
 }
 
 
-.messages__item p{
+.item__text {
     margin: 0;
     min-height: 25px;
 }
