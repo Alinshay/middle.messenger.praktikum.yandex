@@ -1,13 +1,12 @@
-<div class="messages">
-    {{#each this}}
-        <div class="messages__date">{{date}}</div>
-        {{#each messages}}
-        <div> 
+{{#each data}}
+    <div class="messages__date">{{date}}</div>
+    {{#each messages}}
+        <div>
             <div class="messages__item {{whose}}">
                 <p class="item__text">{{message}}</p>
                 <span class="item__time">{{time}}</span>
             </div>
         </div>
-        {{/each}}
     {{/each}}
-</div>
+{{/each}}
+

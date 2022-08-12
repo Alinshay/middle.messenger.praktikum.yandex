@@ -1,3 +1,10 @@
 .error__button-wrapper {
 	padding: 20px;
 }
+
+.error-wrapper {
+	background-color: #fff;
+	width: 100%;
+	margin: auto;
+	padding: 20px;
+}

@@ -1,32 +1,18 @@
-<div class="page">
-    {{>buttonFullScreen id='profile-back-button'}}
-    <div class="form">
-        {{> avatarLg }}
-        <div class="profile__title-wrapper">
-            {{{profileTitleName}}}
-        </div>
-        {{#if (isInfo page)}}
-            {{{profileInfoTable}}}
-            {{>buttonLink title='Change data' id='profile_change_data'}}
-            {{>buttonLink title='Change password' id='profile_change_password'}}
-            {{>buttonLink title='Logout' id='profile_logout' mode='logout'}}
-        {{/if}}
+{{{ buttonFullScreen }}}
+<div class="form profile-form">
+    {{{ avatarLg }}}
+    <div class="profile__title-wrapper">
+        {{{profileTitleName}}}
+    </div>
 
-        {{#if (isChangePassword page)}}
-            <form name='change-password'>
-                {{{profileChangePasswordTable}}}
-                {{>buttonMain title='Save' id='change_password'}}
-            </form>
-        {{/if}}
-
-         {{#if (isChangeInfo page)}}
-            <form name='change-info'>
-                {{{profileChangeInfoTable}}}
-                {{>buttonMain title='Save' id='change_password'}}
-            </form>
-        {{/if}}
-    </div>  
+    {{#if (isInfo page)}}
+        {{{profileInfoTable}}}
+        {{{changeDataButton}}}
+        {{{changePasswordButton}}}
+        {{{logoutButton}}}
+    {{/if}}
 </div>
+
 
 
 

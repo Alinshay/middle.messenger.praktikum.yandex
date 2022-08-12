@@ -1,20 +1,13 @@
-.title
-{
-    text-transform: uppercase;
-    color: transparent;
-    font-weight: 1000;
-    font-style: italic;
-    font-size: 36px;
-    line-height: 40px;
-    text-align: center;
-    -webkit-text-stroke-color: black;
-    -webkit-text-stroke-width: 2px;
-    margin: 0;
-    padding: 20px;
+.title {
+	text-transform: uppercase;
+	color: transparent;
+	font-weight: 1000;
+	font-style: italic;
+	font-size: 36px;
+	line-height: 40px;
+	text-align: center;
+	-webkit-text-stroke-color: black;
+	-webkit-text-stroke-width: 2px;
+	margin: 0;
+	padding: 20px;
 }
-
-
-
-
-
-

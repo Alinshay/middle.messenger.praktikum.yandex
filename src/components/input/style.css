@@ -1,20 +1,22 @@
-.input
-{
-    border: 1px solid black;
-    width: 250px;
-    height: 50px;
-    display: block;
-    padding: 20px;
-    font-size: 16px;
-    color: black;
-    margin: 0 auto 20px;
+.input {
+	border: 1px solid black;
+	width: 250px;
+	height: 50px;
+	display: block;
+	padding: 20px;
+	font-size: 16px;
+	color: black;
+	margin: 0 auto 20px;
 }
 
 .input::placeholder {
-    color: black;
+	color: black;
 }
 
+.input:invalid {
+	border: 1px solid red;
+}
 
-
-
-
+.error {
+	border: 1px solid red;
+}
