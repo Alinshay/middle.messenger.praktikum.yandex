@@ -1,22 +1,43 @@
 <table class="profile-table">
-    {{#if mode}}
-        {{#each context.rows}}
-            <tr class="profile-table__row">
-                <td class="profile-table__data profile-table__title">{{title}}</td>
-                <td class="profile-table__data profile-table__value">
-                    <input name={{name}} class="table-input" value={{value}}>
-                </td>
-            </tr>
-        {{/each}}       
-    {{else}}
-        {{#each context.rows}}
-            <tr class="profile-table__row">
-                <td class="profile-table__data profile-table__title">{{title}}</td>
-                <td class="profile-table__data profile-table__value">
-                    {{value}}
-                </td>
-            </tr>
-        {{/each}}    
-    {{/if}}   
-  </table> 
-  
+    {{#if ( isData mode)}}
+        <tr class="profile-table__row">
+            <td class="profile-table__data profile-table__title"> Email </td>
+            <td class="profile-table__data profile-table__value"> {{{emailInput}}}</td>
+        </tr>
+        <tr class="profile-table__row">
+            <td class="profile-table__data profile-table__title"> Login </td>
+            <td class="profile-table__data profile-table__value"> {{{loginInput}}}</td>
+        </tr>
+        <tr class="profile-table__row">
+            <td class="profile-table__data profile-table__title"> First name </td>
+            <td class="profile-table__data profile-table__value"> {{{firstNameInput}}}</td>
+        </tr>
+        <tr class="profile-table__row">
+            <td class="profile-table__data profile-table__title"> Last name </td>
+            <td class="profile-table__data profile-table__value"> {{{lastNameInput}}}</td>
+        </tr>
+        <tr class="profile-table__row">
+            <td class="profile-table__data profile-table__title"> Display name </td>
+            <td class="profile-table__data profile-table__value"> {{{displayNameInput}}}</td>
+        </tr>
+        <tr class="profile-table__row">
+            <td class="profile-table__data profile-table__title"> Phone number </td>
+            <td class="profile-table__data profile-table__value"> {{{phoneNumberInput}}}</td>
+        </tr>
+    {{/if}}
+    {{#if ( isPassword mode)}}
+        <tr class="profile-table__row">
+            <td class="profile-table__data profile-table__title"> Old password </td>
+            <td class="profile-table__data profile-table__value"> {{{oldPasswordInput}}}</td>
+        </tr>
+        <tr class="profile-table__row">
+            <td class="profile-table__data profile-table__title"> New password </td>
+            <td class="profile-table__data profile-table__value"> {{{newPasswordInput}}}</td>
+        </tr>
+        <tr class="profile-table__row">
+            <td class="profile-table__data profile-table__title"> Repeat password </td>
+            <td class="profile-table__data profile-table__value"> {{{repeatPasswordInput}}}</td>
+        </tr>
+    {{/if}}
+
+</table>

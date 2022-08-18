@@ -1,0 +1,38 @@
+.chat-menu {
+	width: 100%;
+	height: 60px;
+	background-color: $purple;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 10px;
+}
+
+.info__avatar {
+	background-color: $grey-light;
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+	margin: 10px 20px;
+}
+
+.chat-menu__info-wrapper {
+	display: flex;
+}
+
+.info__name {
+	font-size: 15px;
+	margin: 0;
+	align-self: center;
+}
+
+.chat-menu__button {
+	background-image: url("../../static/settings.svg");
+	background-repeat: no-repeat;
+	width: 36px;
+	height: 36px;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	align-self: center;
+	margin-right: 10px;
+}

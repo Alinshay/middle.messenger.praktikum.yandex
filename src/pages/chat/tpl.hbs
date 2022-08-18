@@ -1,14 +1,16 @@
-<div class="page">
-	{{>leftMenu mode=mode}}
-	{{#if activeChat }}
-	<div class="chat__message-list">
-		{{{chatMenu}}}
-		{{{messageList}}}
-		{{> messageInput }}
-	</div>
-	{{else}}
-		<div class="chat__title-wrapper">
-			{{>title value='CHOOSE A CHAT TO START'}}
-		</div>
-	{{/if}}
-</div>
+{{{leftMenu}}}
+{{#if activeChat }}
+    <div class="chat__message-list">
+        {{{chatMenu}}}
+        {{{messageList}}}
+        {{{ messageInput }}}
+        {{{ contextMenu }}}
+    </div>
+{{else}}
+    <div class="chat__title-wrapper">
+        {{{choseAChatTitle}}}
+    </div>
+{{/if}}
+
+
+

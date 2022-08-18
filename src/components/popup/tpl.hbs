@@ -1,26 +1,28 @@
 <div class="background-blur">
 	<div class="popup">
-       {{>title value=title}}
+       {{{title}}}
 
         <div class="popup__content">
             {{#if (isInput typeOfValue)}}
             <form name={{typeOfValue}}>
-                {{> input placeholder=value name=value }}
+                {{{input}}}
             {{/if}}
+
             {{#if (isText typeOfValue)}}
                 <p class="content__text">{{value}}</p>
             {{/if}}
+
             {{#if (isButton typeOfValue)}}
-                {{>buttonLink title=value id=value}}
+                {{{buttonLink}}}
             {{/if}}
         </div>
-        
-        {{>buttonMain title=button_title id=button_id }}
+
+        {{{ button }}}
 
         {{#if (isInput typeOfValue)}}
         </form>
         {{/if}}
-        
+
         {{#if errorText}}
             <p class="popup__error">{{errorText}}</p>
         {{/if}}

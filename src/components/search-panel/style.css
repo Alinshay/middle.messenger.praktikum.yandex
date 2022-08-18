@@ -1,4 +1,4 @@
-.search-panel {	
+.search-panel {
 	width: 100%;
 	height: 60px;
 	background-color: $purple;
@@ -7,13 +7,13 @@
 }
 
 .search-panel__input {
-	background-image: url(../../static/search.svg);
-    background-repeat: no-repeat;
+	background-image: url("../../static/search.svg");
+	background-repeat: no-repeat;
 	background-color: $white-transparent-05;
 	border: none;
 	width: 250px;
 	height: 38px;
-	border-radius: 50px;  /*константа*/
+	border-radius: 50px;
 	padding-left: 35px;
 	margin: 10px;
 }
@@ -23,7 +23,7 @@
 }
 
 .search-panel__button {
-	background-image: url(../../static/home.svg);
+	background-image: url("../../static/home.svg");
 	background-repeat: no-repeat;
 	width: 32px;
 	height: 32px;
@@ -33,8 +33,3 @@
 	align-self: center;
 	margin: 10px;
 }
-
-
-
-
-

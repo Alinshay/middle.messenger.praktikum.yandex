@@ -4,6 +4,7 @@
 	background-color: $white-transparent-08;
 	border: none;
 	padding: 0;
+	display: flex;
 }
 
 .button__icon {
