@@ -10,8 +10,10 @@ function queryStringify(data: Record<string, string>) {
     return keys.reduce((result: string, key: string, index: number) => `${result}${key}=${data[key]}${index < keys.length - 1 ? '&' : ''}`, '?')
 }
 
+type Methods = 'GET' | 'POST' | 'PUT' | 'DELETE'
+
 interface optionsType {
-    method: string
+    method: Methods
     headers: Record<string, string>
     data?: Record<string, any>
     timeout?: number
@@ -20,27 +22,23 @@ interface optionsType {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default class HTTPTransport {
     get = (url: string, options: optionsType) => {
-        this.request(url, { ...options, method: METHODS.GET }, options.timeout)
+        this.request(url, { ...options, method: METHODS.GET as Methods })
     }
 
     put = (url: string, options: optionsType) => {
-        this.request(url, { ...options, method: METHODS.PUT }, options.timeout)
+        this.request(url, { ...options, method: METHODS.PUT as Methods})
     }
 
     post = (url: string, options: optionsType) => {
-        this.request(url, { ...options, method: METHODS.POST }, options.timeout)
+        this.request(url, { ...options, method: METHODS.POST as Methods})
     }
 
     delete = (url: string, options: optionsType) => {
-        this.request(
-            url,
-            { ...options, method: METHODS.DELETE },
-            options.timeout,
-        )
+        this.request(url, { ...options, method: METHODS.DELETE as Methods})
     }
 
-    request = (url: string, options: optionsType, timeout = 5000) => {
-        const { method, headers, data } = options
+    request = (url: string, options: optionsType) => {
+        const { method, headers, data, timeout = 5000 } = options
 
         return new Promise((resolve, reject) => {
             if (!method) {
