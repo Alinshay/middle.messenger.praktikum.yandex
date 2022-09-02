@@ -1,4 +1,4 @@
-import Block from '../../modules/block'
+import Block from '../../modules/block/block'
 import type Input from '../input/Input'
 import type ButtonSimple from '../button-simple/ButtonSimple'
 

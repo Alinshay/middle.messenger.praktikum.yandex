@@ -9,4 +9,4 @@ jsconfig.json
 .parcel-cache
 build
 dist
-
+src/**/*.spec.ts

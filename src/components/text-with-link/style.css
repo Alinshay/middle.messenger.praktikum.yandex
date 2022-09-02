@@ -9,3 +9,12 @@
 .link a {
 	text-decoration: underline;
 }
+
+.link__button {
+	border: none;
+	color: $grey-dark;
+	background: transparent;
+	font-size: 15px;
+	text-decoration: underline;
+	padding: 0;
+}

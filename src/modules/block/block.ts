@@ -1,6 +1,6 @@
 import { v4 as makeUUID } from 'uuid'
 
-import EventBus from './event-bus'
+import EventBus from '../event-bus'
 
 export default class Block {
     static EVENTS = {
@@ -156,7 +156,7 @@ export default class Block {
     _render(): void {
         const block = this.render() as unknown as Node
         this._removeEvents()
-        this._element.innerHTML = ''
+        this._element.textContent = ''
         this._element.appendChild(block)
         this._addEvents()
         this._addAttribute()

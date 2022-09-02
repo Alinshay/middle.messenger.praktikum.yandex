@@ -1,4 +1,5 @@
-import Block from '../../modules/block'
+import Block from '../../modules/block/block'
+import { connect } from '../../utils/connect'
 
 import tpl from './tpl.hbs'
 import './style.css'
@@ -17,9 +18,12 @@ interface chatListProps {
     attr?: {
         class?: string
     }
+    events?: {
+        click?: (event: MouseEvent) => void
+    }
 }
 
-export default class ChatList extends Block {
+export class ChatList extends Block {
     constructor(props: chatListProps) {
         super('div', props)
     }
@@ -31,3 +35,11 @@ export default class ChatList extends Block {
         })
     }
 }
+
+function mapStateToProps(state : Record<string, any>) {
+    return {
+        chats: { chatList: state?.chatList },
+    }
+}
+
+export default connect(ChatList as unknown as typeof Block, mapStateToProps)

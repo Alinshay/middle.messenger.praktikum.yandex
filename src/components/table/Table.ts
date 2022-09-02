@@ -1,6 +1,6 @@
 import Handlebars from 'handlebars'
 
-import Block from '../../modules/block'
+import Block from '../../modules/block/block'
 import type Input from '../input/Input'
 
 import tpl from './tpl.hbs'
@@ -12,7 +12,6 @@ interface tableProps {
     loginInput?: Input | string
     firstNameInput?: Input | string
     lastNameInput?: Input | string
-    displayNameInput?: Input | string
     phoneNumberInput?: Input | string
     oldPasswordInput?: Input | string
     newPasswordInput?: Input | string
@@ -34,7 +33,6 @@ export default class Table extends Block {
             loginInput: this.props.loginInput,
             firstNameInput: this.props.firstNameInput,
             lastNameInput: this.props.lastNameInput,
-            displayNameInput: this.props.displayNameInput,
             phoneNumberInput: this.props.phoneNumberInput,
             oldPasswordInput: this.props.oldPasswordInput,
             newPasswordInput: this.props.newPasswordInput,

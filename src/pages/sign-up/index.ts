@@ -10,6 +10,8 @@ import {
     passwordRegexp,
     phoneRegexp,
 } from '../../utils/regexp'
+import { router } from '../../index'
+import AuthController from '../../api/controllers/auth'
 
 import SignUp from './SignUp'
 
@@ -175,10 +177,15 @@ const button = new Button({
 
 const buttonLink = new TextWithLink({
     text: 'Already Have An Account?',
-    linkRef: 'signup',
     linkText: 'Sign Up',
     attr: {
         class: 'link',
+    },
+    events: {
+        click: (e) => {
+            e.preventDefault()
+            router.go('/')
+        },
     },
 })
 
@@ -215,13 +222,10 @@ export default new SignUp({
                 second_name: (secondNameInput.getContent() as HTMLInputElement).value,
                 phone: (phoneNumberInput.getContent() as HTMLInputElement).value,
                 password: (passwordInput.getContent() as HTMLInputElement).value,
-                repeat_password: (repeatPasswordInput.getContent() as HTMLInputElement).value,
             }
-            // eslint-disable-next-line no-console, no-unused-expressions
-            if (isValid) console.log(result)
-
-            // eslint-disable-next-line no-console, no-unused-expressions
-            console.log('invalid')
+            if (isValid) {
+                AuthController.signUp(result)
+            }
         },
     },
 })

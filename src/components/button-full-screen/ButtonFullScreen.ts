@@ -1,10 +1,10 @@
-import Block from '../../modules/block'
+import Block from '../../modules/block/block'
 
 import tpl from './tpl.hbs'
 import './style.css'
 
 interface buttonProps {
-    chatRef: string
+    events?: { click: (event: MouseEvent) => void }
 }
 
 export default class ButtonFullScreen extends Block {
@@ -13,8 +13,6 @@ export default class ButtonFullScreen extends Block {
     }
 
     render() {
-        return this.compile(tpl, {
-            chatRef: this.props.chatRef,
-        })
+        return this.compile(tpl, {})
     }
 }

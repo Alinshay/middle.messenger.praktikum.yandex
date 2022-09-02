@@ -21,6 +21,7 @@
 
 .messages__item {
 	max-width: 400px;
+	min-width: 100px;
 	background-color: $white-transparent-08;
 	padding: 20px;
 	margin: 30px 20px;

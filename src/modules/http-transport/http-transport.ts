@@ -15,30 +15,23 @@ type Methods = 'GET' | 'POST' | 'PUT' | 'DELETE'
 interface optionsType {
     method: Methods
     headers: Record<string, string>
-    data?: Record<string, any>
+    data?: Record<string, any>|string
     timeout?: number
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default class HTTPTransport {
-    get = (url: string, options: optionsType) => {
-        this.request(url, { ...options, method: METHODS.GET as Methods })
-    }
+    get = (url: string, options: optionsType) : Promise<unknown> => this.request(url, { ...options, method: METHODS.GET as Methods })
 
-    put = (url: string, options: optionsType) => {
-        this.request(url, { ...options, method: METHODS.PUT as Methods})
-    }
+    put = (url: string, options: optionsType) : Promise<unknown> => this.request(url, { ...options, method: METHODS.PUT as Methods })
 
-    post = (url: string, options: optionsType) => {
-        this.request(url, { ...options, method: METHODS.POST as Methods})
-    }
+    post = (url: string, options: optionsType) : Promise<unknown> => this.request(url, { ...options, method: METHODS.POST as Methods })
 
-    delete = (url: string, options: optionsType) => {
-        this.request(url, { ...options, method: METHODS.DELETE as Methods})
-    }
+    delete = (url: string, options: optionsType) => this.request(url, { ...options, method: METHODS.DELETE as Methods })
 
-    request = (url: string, options: optionsType) => {
-        const { method, headers, data, timeout = 5000 } = options
+    request = (url: string, options: optionsType) : Promise<unknown> => {
+        const {
+            method, headers, data, timeout = 5000,
+        } = options
 
         return new Promise((resolve, reject) => {
             if (!method) {
@@ -48,7 +41,8 @@ export default class HTTPTransport {
 
             const xhr = new XMLHttpRequest()
             // eslint-disable-next-line no-unused-expressions
-            method === METHODS.GET ? xhr.open(method, `${url}${queryStringify(data || {})}`) : xhr.open(method, url)
+            method === METHODS.GET ? xhr.open(method, `${url}${queryStringify(data as Record<string, any> || {})}`) : xhr.open(method, url)
+            xhr.withCredentials = true
 
             Object.keys(headers).forEach((key) => {
                 xhr.setRequestHeader(key, headers[key])
@@ -66,8 +60,10 @@ export default class HTTPTransport {
 
             if (method === METHODS.GET || !data) {
                 xhr.send()
+            } else if (method === METHODS.PUT) {
+                xhr.send(data as FormData)
             } else {
-                xhr.send(data as Document)
+                xhr.send(data as string)
             }
         })
     }

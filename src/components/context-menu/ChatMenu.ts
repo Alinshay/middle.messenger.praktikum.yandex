@@ -1,4 +1,4 @@
-import Block from '../../modules/block'
+import Block from '../../modules/block/block'
 import ButtonSimple from '../button-simple/ButtonSimple'
 
 import tpl from './tpl.hbs'

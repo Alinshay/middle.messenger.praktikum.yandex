@@ -1,12 +1,13 @@
-import Block from '../../modules/block'
+import Block from '../../modules/block/block'
 import type SearchInput from '../search-input/ChatList'
+import ButtonSimple from '../button-simple/ButtonSimple'
 
 import tpl from './tpl.hbs'
 import './style.css'
 
 interface searchPanelProps {
-    profileRef: string
     input: SearchInput
+    button: ButtonSimple
     attr?: {
         class?: string
     }
@@ -19,8 +20,8 @@ export default class SearchPanel extends Block {
 
     render() {
         return this.compile(tpl, {
-            profileRef: this.props.profileRef,
             input: this.props.input,
+            button: this.props.button,
         })
     }
 }

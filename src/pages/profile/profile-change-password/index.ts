@@ -4,6 +4,8 @@ import Button from '../../../components/button/Button'
 import ChangePasswordForm from '../profile-change-password/ProfileLayout'
 import Table from '../../../components/table/Table'
 import { passwordRegexp } from '../../../utils/regexp'
+import { router } from '../../../index'
+import UserController from '../../../api/controllers/profile'
 
 const oldPasswordInput = new Input({
     attr: {
@@ -12,10 +14,10 @@ const oldPasswordInput = new Input({
     },
     events: {
         focus: () => {
-            validation(oldPasswordInput.getContent(), passwordRegexp)
+            validation(oldPasswordInput.getContent() as HTMLInputElement, passwordRegexp)
         },
         blur: () => {
-            validation(oldPasswordInput.getContent(), passwordRegexp)
+            validation(oldPasswordInput.getContent() as HTMLInputElement, passwordRegexp)
         },
         input: () => {
             resetValidation(oldPasswordInput.getContent())
@@ -30,10 +32,10 @@ const newPasswordInput = new Input({
     },
     events: {
         focus: () => {
-            validation(newPasswordInput.getContent(), passwordRegexp)
+            validation(newPasswordInput.getContent() as HTMLInputElement, passwordRegexp)
         },
         blur: () => {
-            validation(newPasswordInput.getContent(), passwordRegexp)
+            validation(newPasswordInput.getContent() as HTMLInputElement, passwordRegexp)
         },
         input: () => {
             resetValidation(newPasswordInput.getContent())
@@ -90,22 +92,28 @@ export default new ChangePasswordForm({
         submit: (event) => {
             event.preventDefault()
 
-            const isValid = validation(oldPasswordInput.getContent(), passwordRegexp)
-                && validation(newPasswordInput.getContent(), passwordRegexp)
-                && (newPasswordInput.getContent() as HTMLInputElement).value
-                === (repeatPasswordInput.getContent() as HTMLInputElement).value
+            const oldPassword : string = (oldPasswordInput.getContent() as HTMLInputElement).value
+            const newPassword : string = (newPasswordInput.getContent() as HTMLInputElement).value
+            const repeatPassword : string = (repeatPasswordInput.getContent() as HTMLInputElement).value
 
-            const result = {
-                old_password: (oldPasswordInput.getContent() as HTMLInputElement).value,
-                new_password: (newPasswordInput.getContent() as HTMLInputElement).value,
-                repeat_password: (repeatPasswordInput.getContent() as HTMLInputElement).value,
+            const isValid = validation(oldPasswordInput.getContent() as HTMLInputElement, passwordRegexp)
+                && validation(newPasswordInput.getContent() as HTMLInputElement, passwordRegexp)
+                && newPassword === repeatPassword
+
+            if (isValid) {
+                UserController.changePassword(oldPassword, newPassword)
+                    .then((response) => {
+                        if (response.reason) {
+                            (oldPasswordInput.getContent() as HTMLInputElement).classList.add('error')
+                        } else {
+                            (oldPasswordInput.getContent() as HTMLInputElement).value = '' as string
+                            (newPasswordInput.getContent() as HTMLInputElement).value = '' as string
+                            (repeatPasswordInput.getContent() as HTMLInputElement).value = '' as string
+                            oldPasswordInput.getContent().classList.remove('error')
+                            router.go('/settings')
+                        }
+                    })
             }
-            // eslint-disable-next-line no-console, no-unused-expressions
-            if (isValid) console.log(result)
-            // eslint-disable-next-line no-console, no-unused-expressions
-            console.log('invalid')
-
-            // window.location.pathname = '/profile'
         },
     },
 

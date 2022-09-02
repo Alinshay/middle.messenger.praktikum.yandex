@@ -1,10 +1,10 @@
-import Block from '../modules/block'
+import Block from '../modules/block/block'
 
 export default function render(query: string, block: Block) {
     const root = document.querySelector<HTMLElement>(query)
-        if (root !== null) {
-            root.appendChild(block.getContent())
-            block.dispatchComponentDidMount()
-        }
+    if (root !== null) {
+        root.appendChild(block.getContent())
+        block.dispatchComponentDidMount()
+    }
     return root
 }

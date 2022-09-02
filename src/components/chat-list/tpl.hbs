@@ -4,26 +4,26 @@
             <div class="avatar_sm"></div>
             <div class="item__info">
                 <div class="info__title info__title_search">
-                    <h3>{{{name}}}</h3>
+                    <h3>{{{title}}}</h3>
                 </div>
             </div>
         </button>
     {{/each}}
 {{else}}
     {{#each chats.chatList}}
-        <button class="chat-list__item">
+        <button id={{{id}}} class="chat-list__item">
             <div class="avatar_sm"></div>
             <div class="item__info">
                 <div class="info__title">
-                    <h3>{{{name}}}</h3>
+                    <h3>{{{title}}}</h3>
                     <time class="title__last-message-time">
                         {{{time}}}
                     </time>
                 </div>
                 <div class="info__subtitle">
-                    <p class="subtitle__last-message"> {{{lastMessage}}}</p>
-                    {{#if badge}}
-                        <span class="subtitle__message-badge"> {{{badge}}} </span>
+                    <p class="subtitle__last-message"> {{{last_message.content}}}</p>
+                    {{#if unread_count}}
+                        <span class="subtitle__message-badge"> {{{unread_count}}} </span>
                     {{/if}}
                 </div>
             </div>

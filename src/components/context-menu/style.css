@@ -1,8 +1,19 @@
-.context-menu {
+.context-menu_bottom {
 	position: absolute;
 	background: #fff;
 	bottom: 60px;
 	left: 310px;
+	display: flex;
+	flex-direction: column;
+	padding: 15px;
+	border-radius: 12px;
+}
+
+.context-menu_top {
+	position: absolute;
+	background: #fff;
+	top: 65px;
+	right: 15px;
 	display: flex;
 	flex-direction: column;
 	padding: 15px;

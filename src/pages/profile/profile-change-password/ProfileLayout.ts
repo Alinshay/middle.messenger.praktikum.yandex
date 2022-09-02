@@ -1,4 +1,4 @@
-import Block from '../../../modules/block'
+import Block from '../../../modules/block/block'
 import type Table from '../../../components/table/Table'
 import type Button from '../../../components/button/Button'
 

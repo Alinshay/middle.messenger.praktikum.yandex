@@ -4,6 +4,8 @@ import Title from '../../components/title/Title'
 import TextWithLink from '../../components/text-with-link/TextWithLink'
 import { resetValidation, validation } from '../../utils/validation'
 import { loginRegexp, passwordRegexp } from '../../utils/regexp'
+import AuthController from '../../api/controllers/auth'
+import { router } from '../../index'
 
 import SignIn from './SignIn'
 
@@ -62,10 +64,15 @@ const button = new Button({
 
 const buttonLink = new TextWithLink({
     text: 'Don’t Have An Account?',
-    linkRef: 'signup',
     linkText: 'Sign Up',
     attr: {
         class: 'link',
+    },
+    events: {
+        click: (e) => {
+            e.preventDefault()
+            router.go('/signup')
+        },
     },
 })
 
@@ -90,11 +97,8 @@ export default new SignIn({
             }
 
             if (isValid) {
-                // eslint-disable-next-line no-console, no-unused-expressions
-                console.log('invalid')
+                AuthController.signIn(result)
             }
-            // eslint-disable-next-line no-console, no-unused-expressions
-            console.log(result)
         },
     },
 })

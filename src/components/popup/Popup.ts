@@ -1,6 +1,6 @@
 import Handlebars from 'handlebars'
 
-import Block from '../../modules/block'
+import Block from '../../modules/block/block'
 import type Title from '../title/Title'
 import type Button from '../button/Button'
 import type Input from '../input/Input'
@@ -19,6 +19,10 @@ interface popupProps {
     buttonLink?: ButtonLink
     attr: {
         class: string
+    },
+    events?: {
+        click?: (event: MouseEvent) => void
+        submit?: (event: MouseEvent) => void
     }
 }
 

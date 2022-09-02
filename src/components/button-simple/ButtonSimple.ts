@@ -1,10 +1,10 @@
-import Block from '../../modules/block'
+import Block from '../../modules/block/block'
 
 import tpl from './tpl.hbs'
 
 interface buttonProps {
     text?: string
-    attr: {
+    attr?: {
         class?: string
         type?: string
     }
