@@ -3,14 +3,14 @@ import Block from '../../modules/block/block'
 import tpl from './tpl.hbs'
 import './style.css'
 
-interface buttonProps {
+interface IButtonProps {
     text: string
     attr: { class: string }
     events?: { click: (event: MouseEvent) => void }
 }
 
 export default class Button extends Block {
-    constructor(props: buttonProps) {
+    constructor(props: IButtonProps) {
         super('button', props)
     }
 

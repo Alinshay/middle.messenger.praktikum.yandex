@@ -1,5 +1,5 @@
 import Block from '../modules/block/block'
-import store, { StoreEvents } from '../modules/store'
+import store, { IState, StoreEvents } from '../modules/store'
 
 type Indexed<T = unknown> = {
     [key in string]: T
@@ -47,7 +47,7 @@ export function isEqual(lhs: PlainObject, rhs: PlainObject) {
     return true
 }
 
-export function connect(Component: typeof Block, mapStateToProps: (state: Indexed) => Indexed) {
+export function connect(Component: typeof Block, mapStateToProps: (state: IState) => Indexed) {
     return class extends Component {
         constructor(...props: any) {
             super({ ...props[0], ...mapStateToProps(store.getState()) })

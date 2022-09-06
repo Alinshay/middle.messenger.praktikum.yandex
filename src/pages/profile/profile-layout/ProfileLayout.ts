@@ -7,7 +7,7 @@ import Popup from '../../../components/popup/Popup'
 import tpl from './tpl.hbs'
 import './style.css'
 
-interface profileLayoutProps {
+interface IProfileLayoutProps {
     profileTitleName?: Title
     buttonFullScreen: ButtonFullScreen
     content: Block
@@ -19,7 +19,7 @@ interface profileLayoutProps {
 }
 
 export default class ProfileLayout extends Block {
-    constructor(props: profileLayoutProps) {
+    constructor(props: IProfileLayoutProps) {
         super('div', props)
     }
 

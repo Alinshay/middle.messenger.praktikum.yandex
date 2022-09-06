@@ -1,6 +1,6 @@
 import ButtonLink from '../../../components/button-link/ButtonLink'
 import Table from '../../../components/table/Table'
-import store, { StoreEvents } from '../../../modules/store'
+import store, { IProfile, StoreEvents } from '../../../modules/store'
 import { router } from '../../../index'
 import AuthController from '../../../api/controllers/auth'
 import { getProfile } from '../../../utils/utils'
@@ -61,7 +61,7 @@ export default new ProfileInfo({
 })
 
 store.on(StoreEvents.Updated, () => {
-    const profileInfo : Record<string, any> | undefined = getProfile()
+    const profileInfo : IProfile | undefined = getProfile()
     if (profileInfo) {
         profileTable.setProps({
             emailInput: profileInfo.email,

@@ -6,7 +6,7 @@ import type ButtonSimple from '../button-simple/ButtonSimple'
 import tpl from './tpl.hbs'
 import './style.css'
 
-interface leftMenuProps {
+interface ILeftMenuProps {
     searchPanel: SearchPanel
     chatList: ChatList
     button: ButtonSimple
@@ -14,7 +14,7 @@ interface leftMenuProps {
 }
 
 export default class LeftMenu extends Block {
-    constructor(props: leftMenuProps) {
+    constructor(props: ILeftMenuProps) {
         super('div', props)
     }
 

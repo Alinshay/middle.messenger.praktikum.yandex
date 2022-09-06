@@ -1,11 +1,10 @@
 import HTTP from '../modules/http-transport/http-transport'
 
-const chatAPIInstance = new HTTP()
+const chatAPIInstance = new HTTP('https://ya-praktikum.tech/api/v2/chats')
 
 export class ChatAPI {
-    getChats() {
-        return chatAPIInstance.get('https://ya-praktikum.tech/api/v2/chats', {
-            method: 'GET',
+    public getChats() {
+        return chatAPIInstance.get('/', {
             headers: {
                 'content-type': 'application/json',
             },
@@ -14,51 +13,38 @@ export class ChatAPI {
     }
 
     public createChat(title: string) {
-        return chatAPIInstance.post('https://ya-praktikum.tech/api/v2/chats', {
-            method: 'POST',
+        return chatAPIInstance.post('/', {
             headers: {
                 'content-type': 'application/json',
             },
-            data: JSON.stringify({ title }),
+            data: { title },
         })
     }
 
-    public addUserToChat(chatId: string, userName: string) {
-        return chatAPIInstance.put('https://ya-praktikum.tech/api/v2/chats/users', {
-            method: 'PUT',
+    public addUserToChat(chatId: number, userName: string) {
+        return chatAPIInstance.put('/users', {
             headers: {
                 'content-type': 'application/json',
             },
-            data: JSON.stringify({ chatId, users: [userName] }),
+            data: { chatId, users: [userName] },
         })
     }
 
     public getChatUsers(chatId: string) {
-        return chatAPIInstance.get(`https://ya-praktikum.tech/api/v2/chats/${chatId}/users`, {
-            method: 'GET',
-            headers: {
-                'content-type': 'application/json',
-            },
-        })
+        return chatAPIInstance.get(`/${chatId}/users`, {})
     }
 
-    public deleteUserFromChat(chatId: string, userName: string) {
-        return chatAPIInstance.delete('https://ya-praktikum.tech/api/v2/chats/users', {
-            method: 'DELETE',
+    public deleteUserFromChat(chatId: number, userName: string) {
+        return chatAPIInstance.delete('/users', {
             headers: {
                 'content-type': 'application/json',
             },
-            data: JSON.stringify({ chatId, users: [userName] }),
+            data: { chatId, users: [userName] },
         })
     }
 
     public getToken(chatId: number) {
-        return chatAPIInstance.post(`https://ya-praktikum.tech/api/v2/chats/token/${chatId}`, {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json',
-            },
-        })
+        return chatAPIInstance.post(`/token/${chatId}`)
     }
 }
 

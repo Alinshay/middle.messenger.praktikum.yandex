@@ -3,7 +3,7 @@ import Block from '../../modules/block/block'
 import tpl from './tpl.hbs'
 import './style.css'
 
-interface textWithLinkProps {
+interface ITextWithLinkProps {
     text: string
     linkText: string
     attr: { class: string }
@@ -11,7 +11,7 @@ interface textWithLinkProps {
 }
 
 export default class TextWithLink extends Block {
-    constructor(props: textWithLinkProps) {
+    constructor(props: ITextWithLinkProps) {
         super('p', props)
     }
 

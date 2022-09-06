@@ -4,7 +4,7 @@ import type Table from '../../../components/table/Table'
 
 import tpl from './tpl.hbs'
 
-interface changeDataProps {
+interface IChangeDataProps {
     table: Table
     saveButton: Button
     attr?: {
@@ -16,7 +16,7 @@ interface changeDataProps {
 }
 
 export default class ChangeDataForm extends Block {
-    constructor(props: changeDataProps) {
+    constructor(props: IChangeDataProps) {
         super('form', props)
     }
 

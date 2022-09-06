@@ -14,21 +14,27 @@ type Methods = 'GET' | 'POST' | 'PUT' | 'DELETE'
 
 interface optionsType {
     method: Methods
-    headers: Record<string, string>
+    headers?: Record<string, string>
     data?: Record<string, any>|string
     timeout?: number
 }
 
 export default class HTTPTransport {
-    get = (url: string, options: optionsType) : Promise<unknown> => this.request(url, { ...options, method: METHODS.GET as Methods })
+    private baseUrl: string
 
-    put = (url: string, options: optionsType) : Promise<unknown> => this.request(url, { ...options, method: METHODS.PUT as Methods })
+    constructor(baseUrl: string = '') {
+        this.baseUrl = baseUrl
+    }
 
-    post = (url: string, options: optionsType) : Promise<unknown> => this.request(url, { ...options, method: METHODS.POST as Methods })
+    get = (url: string, options: Omit<optionsType, 'method'>) : Promise<XMLHttpRequest> => this.request(url, { ...options, method: METHODS.GET as Methods })
 
-    delete = (url: string, options: optionsType) => this.request(url, { ...options, method: METHODS.DELETE as Methods })
+    put = (url: string, options: Omit<optionsType, 'method'> = {}) : Promise<XMLHttpRequest> => this.request(url, { ...options, method: METHODS.PUT as Methods })
 
-    request = (url: string, options: optionsType) : Promise<unknown> => {
+    post = (url: string, options: Omit<optionsType, 'method'> = {}) : Promise<XMLHttpRequest> => this.request(url, { ...options, method: METHODS.POST as Methods })
+
+    delete = (url: string, options: Omit<optionsType, 'method'> = {}) : Promise<XMLHttpRequest> => this.request(url, { ...options, method: METHODS.DELETE as Methods })
+
+    request = (url: string, options: optionsType) : Promise<XMLHttpRequest> => {
         const {
             method, headers, data, timeout = 5000,
         } = options
@@ -40,13 +46,20 @@ export default class HTTPTransport {
             }
 
             const xhr = new XMLHttpRequest()
+            if (this.baseUrl) {
+                // eslint-disable-next-line no-param-reassign
+                url = this.baseUrl + url
+            }
+
             // eslint-disable-next-line no-unused-expressions
-            method === METHODS.GET ? xhr.open(method, `${url}${queryStringify(data as Record<string, any> || {})}`) : xhr.open(method, url)
+            method === METHODS.GET ? xhr.open(method, `${url}${queryStringify(data as Record<string, string> || {})}`) : xhr.open(method, url)
             xhr.withCredentials = true
 
-            Object.keys(headers).forEach((key) => {
-                xhr.setRequestHeader(key, headers[key])
-            })
+            if (headers) {
+                Object.keys(headers).forEach((key) => {
+                    xhr.setRequestHeader(key, headers[key])
+                })
+            }
 
             xhr.onload = () => {
                 resolve(xhr)
@@ -63,7 +76,7 @@ export default class HTTPTransport {
             } else if (method === METHODS.PUT) {
                 xhr.send(data as FormData)
             } else {
-                xhr.send(data as string)
+                xhr.send(JSON.stringify(data))
             }
         })
     }

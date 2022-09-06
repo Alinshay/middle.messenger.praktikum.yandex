@@ -103,7 +103,7 @@ export default new ChangePasswordForm({
             if (isValid) {
                 UserController.changePassword(oldPassword, newPassword)
                     .then((response) => {
-                        if (response.reason) {
+                        if (response?.reason) {
                             (oldPasswordInput.getContent() as HTMLInputElement).classList.add('error')
                         } else {
                             (oldPasswordInput.getContent() as HTMLInputElement).value = '' as string

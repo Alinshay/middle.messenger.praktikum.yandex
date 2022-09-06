@@ -1,14 +1,14 @@
-import Block from '../../modules/block/block'
+import IBlock from '../../modules/block/block'
 
 import tpl from './tpl.hbs'
 import './style.css'
 
-interface buttonProps {
+interface IButtonProps {
     events?: { click: (event: MouseEvent) => void }
 }
 
-export default class ButtonFullScreen extends Block {
-    constructor(props: buttonProps) {
+export default class ButtonFullScreen extends IBlock {
+    constructor(props: IButtonProps) {
         super('div', props)
     }
 

@@ -5,7 +5,7 @@ import ButtonSimple from '../button-simple/ButtonSimple'
 import tpl from './tpl.hbs'
 import './style.css'
 
-interface searchPanelProps {
+interface ISearchPanelProps {
     input: SearchInput
     button: ButtonSimple
     attr?: {
@@ -14,7 +14,7 @@ interface searchPanelProps {
 }
 
 export default class SearchPanel extends Block {
-    constructor(props: searchPanelProps) {
+    constructor(props: ISearchPanelProps) {
         super('nav', props)
     }
 

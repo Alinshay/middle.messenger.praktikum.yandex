@@ -9,7 +9,7 @@ import type ButtonLink from '../button-link/ButtonLink'
 import tpl from './tpl.hbs'
 import './style.css'
 
-interface popupProps {
+interface IPopupProps {
     title: Title
     typeOfValue: string
     button: Button
@@ -27,7 +27,7 @@ interface popupProps {
 }
 
 export default class Popup extends Block {
-    constructor(props: popupProps) {
+    constructor(props: IPopupProps) {
         super('div', props)
     }
 

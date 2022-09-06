@@ -3,7 +3,7 @@ import Block from '../../modules/block/block'
 import tpl from './tpl.hbs'
 import './style.css'
 
-export interface titleProps {
+export interface ITitleProps {
     value: string,
     attr: {
         class?: string
@@ -11,7 +11,7 @@ export interface titleProps {
 }
 
 export default class Title extends Block {
-    constructor(props: titleProps) {
+    constructor(props: ITitleProps) {
         super('h1', props)
     }
 

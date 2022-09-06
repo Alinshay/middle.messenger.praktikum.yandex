@@ -5,7 +5,7 @@ import ChatList, { ChatList as ChatListType } from '../../../components/chat-lis
 import Chat from '../index'
 import { messageList } from '..'
 import ButtonSimple from '../../../components/button-simple/ButtonSimple'
-import store, { StoreEvents } from '../../../modules/store'
+import store, { IChat, StoreEvents } from '../../../modules/store'
 import chatController from '../../../api/controllers/chat'
 import { router } from '../../../index'
 import { getChatList } from '../../../utils/utils'
@@ -15,7 +15,7 @@ import Input from '../../../components/input/Input'
 import Title from '../../../components/title/Title'
 
 let prevItemId : string = ''
-let chats : Record<string, any> = []
+let chats : IChat[] | undefined = []
 
 store.on(StoreEvents.Updated, () => {
     chats = getChatList() || []
@@ -82,8 +82,8 @@ const chatList = new ChatList({
         class: 'chat-list',
     },
     events: {
-        click: (e: MouseEvent & { path: Node[] }) => {
-            e.path.forEach((item: Record<string, any>) => {
+        click: (e: MouseEvent & { path: {tagName: string, id: string}[] }) => {
+            e.path.forEach((item) => {
                 if (item.tagName === 'BUTTON') {
                     Chat.setProps({ activeChat: item.id })
                     store.set('chat.id', item.id)
@@ -119,7 +119,7 @@ const searchInput = new SearchInput({
         },
         input: () => {
             const searchQuery = (searchInput.getContent() as HTMLInputElement).value
-            const filteredChatList = chats.filter((item: Record<string, any>) => {
+            const filteredChatList = (chats as IChat[]).filter((item: {title: string}) => {
                 const itemName = item.title.toUpperCase()
                 return itemName.includes(searchQuery.toUpperCase())
             })

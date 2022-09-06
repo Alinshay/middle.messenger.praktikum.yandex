@@ -3,7 +3,7 @@ import Block from '../../modules/block/block'
 import tpl from './tpl.hbs'
 import './style.css'
 
-interface buttonLinkProps {
+interface IButtonLinkProps {
     title: string,
     mode?: string,
     attr?: {
@@ -14,7 +14,7 @@ interface buttonLinkProps {
 }
 
 export default class ButtonLink extends Block {
-    constructor(props: buttonLinkProps) {
+    constructor(props: IButtonLinkProps) {
         super('button', props)
     }
 

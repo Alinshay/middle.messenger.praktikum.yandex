@@ -4,7 +4,7 @@ import type Button from '../../../components/button/Button'
 
 import tpl from './tpl.hbs'
 
-interface changePasswordProps {
+interface IChangePasswordProps {
     table: Table
     button: Button
     attr?: {
@@ -16,7 +16,7 @@ interface changePasswordProps {
 }
 
 export default class ChangePasswordForm extends Block {
-    constructor(props: changePasswordProps) {
+    constructor(props: IChangePasswordProps) {
         super('form', props)
     }
 

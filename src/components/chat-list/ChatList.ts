@@ -1,16 +1,17 @@
 import Block from '../../modules/block/block'
 import { connect } from '../../utils/connect'
+import { IState } from '../../modules/store'
 
 import tpl from './tpl.hbs'
 import './style.css'
 
-interface chatListProps {
+interface IChatListProps {
     chats: {
         chatList: Array<{
-                id: number,
-                name: string,
-                time: string,
-                message: string,
+                id: number
+                name: string
+                time: string
+                message: string
                 badge?: string
             }>
     }
@@ -24,7 +25,7 @@ interface chatListProps {
 }
 
 export class ChatList extends Block {
-    constructor(props: chatListProps) {
+    constructor(props: IChatListProps) {
         super('div', props)
     }
 
@@ -36,7 +37,7 @@ export class ChatList extends Block {
     }
 }
 
-function mapStateToProps(state : Record<string, any>) {
+function mapStateToProps(state : IState) {
     return {
         chats: { chatList: state?.chatList },
     }

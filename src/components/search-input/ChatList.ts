@@ -3,7 +3,7 @@ import Block from '../../modules/block/block'
 import tpl from './tpl.hbs'
 import './style.css'
 
-interface searchInputProps {
+interface ISearchInputProps {
     attr: {
         class?: string
         placeholder?: string
@@ -16,7 +16,7 @@ interface searchInputProps {
 }
 
 export default class SearchInput extends Block {
-    constructor(props: searchInputProps) {
+    constructor(props: ISearchInputProps) {
         super('input', props)
     }
 

@@ -21,7 +21,7 @@ export const popupButtonAdd = new Button({
     events: {
         click: (event) => {
             event.preventDefault()
-            const chatId = (store.getState()as Record<string, any>).chat?.id
+            const chatId = store.getState().chat?.id
             const inputValue = (popupInputAdd.getContent() as HTMLInputElement).value
             if (chatId && inputValue) {
                 chatController.addUserToChat(chatId, inputValue)
@@ -69,7 +69,7 @@ export const popupButtonDelete = new Button({
     events: {
         click: (event) => {
             event.preventDefault()
-            const chatId = (store.getState()as Record<string, any>).chat?.id
+            const chatId = store.getState().chat?.id
             const inputValue = (popupInputDelete.getContent() as HTMLInputElement).value
             if (chatId && inputValue) {
                 chatController.deleteUserFromChat(chatId, inputValue)

@@ -1,13 +1,15 @@
+import { IChat } from '../../modules/store'
+
 const isToday = (date: Date) => {
     const now = new Date()
     return now.getDate() === date.getDate()
 }
 
-export const parseChatList = (array: any) => {
+export const parseChatList = (array: IChat[]) => {
     if (!Array.isArray(array)) {
         return []
     }
-    const result = array.sort((a: any, b: any) => {
+    const result = array.sort((a: IChat, b: IChat) => {
         if (a?.last_message?.time && b?.last_message?.time) {
             return new Date(b.last_message.time).getTime() - new Date(a.last_message.time).getTime()
         }
@@ -17,7 +19,7 @@ export const parseChatList = (array: any) => {
         return 0
     })
 
-    result.forEach((item: any) => {
+    result.forEach((item: IChat) => {
         if (item?.last_message?.time) {
             const time = new Date(item.last_message.time)
             if (isToday(time)) {

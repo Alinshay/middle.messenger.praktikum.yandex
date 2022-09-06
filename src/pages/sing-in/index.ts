@@ -24,10 +24,10 @@ const loginInput = new Input({
     },
     events: {
         focus: () => {
-            validation(loginInput.getContent(), loginRegexp)
+            validation(loginInput.getContent() as HTMLInputElement, loginRegexp)
         },
         blur: () => {
-            validation(loginInput.getContent(), loginRegexp)
+            validation(loginInput.getContent() as HTMLInputElement, loginRegexp)
         },
         input: () => {
             resetValidation(loginInput.getContent())
@@ -44,10 +44,10 @@ const passwordInput = new Input({
     },
     events: {
         focus: () => {
-            validation(passwordInput.getContent(), passwordRegexp)
+            validation(passwordInput.getContent() as HTMLInputElement, passwordRegexp)
         },
         blur: () => {
-            validation(passwordInput.getContent(), passwordRegexp)
+            validation(passwordInput.getContent() as HTMLInputElement, passwordRegexp)
         },
         input: () => {
             resetValidation(passwordInput.getContent())
@@ -88,8 +88,8 @@ export default new SignIn({
     events: {
         submit: (event: MouseEvent) => {
             event.preventDefault()
-            const isValid = validation(loginInput.getContent(), loginRegexp)
-                && validation(passwordInput.getContent(), passwordRegexp)
+            const isValid = validation(loginInput.getContent() as HTMLInputElement, loginRegexp)
+                && validation(passwordInput.getContent() as HTMLInputElement, passwordRegexp)
 
             const result = {
                 login: (loginInput.getContent() as HTMLInputElement).value,

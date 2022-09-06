@@ -1,17 +1,18 @@
 import Block from '../../modules/block/block'
 import { connect } from '../../utils/connect'
+import { IState } from '../../modules/store'
 
 import tpl from './tpl.hbs'
 import './style.css'
 
-interface AvatarLgProps {
+interface IAvatarLgProps {
     src?: string
     imgSrc?: string
     events?: { click: (event: MouseEvent) => void }
 }
 
 export class AvatarLg extends Block {
-    constructor(props: AvatarLgProps) {
+    constructor(props: IAvatarLgProps) {
         super('span', props)
     }
 
@@ -23,7 +24,7 @@ export class AvatarLg extends Block {
     }
 }
 
-function mapStateToProps(state: Record<string, any>) {
+function mapStateToProps(state: IState) {
     return {
         src: state?.profile?.avatar,
     }

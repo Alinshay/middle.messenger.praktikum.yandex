@@ -6,7 +6,7 @@ import type Input from '../input/Input'
 import tpl from './tpl.hbs'
 import './style.css'
 
-interface tableProps {
+interface ITableProps {
     mode: 'data' | 'password',
     emailInput?: Input | string
     loginInput?: Input | string
@@ -22,7 +22,7 @@ interface tableProps {
 }
 
 export default class Table extends Block {
-    constructor(props: tableProps) {
+    constructor(props: ITableProps) {
         super('div', props)
     }
 

@@ -7,7 +7,7 @@ import type TextWithLink from '../../components/text-with-link/TextWithLink'
 import tpl from './tpl.hbs'
 import './style.css'
 
-interface signUpProps {
+interface ISignUpProps {
     title: Title
     loginInput: Input
     passwordInput: Input
@@ -25,7 +25,7 @@ interface signUpProps {
 }
 
 export default class SignUp extends Block {
-    constructor(props: signUpProps) {
+    constructor(props: ISignUpProps) {
         super('div', props)
     }
 

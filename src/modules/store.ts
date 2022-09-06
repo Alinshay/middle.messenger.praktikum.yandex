@@ -55,10 +55,45 @@ export enum StoreEvents {
     Updated = 'updated',
 }
 
-class Store extends EventBus {
-    private state: Indexed = {}
+export interface IProfile {
+    avatar: string | null
+    display_name: string | null
+    email: string
+    first_name: string
+    id: number
+    login: string
+    phone: string
+    second_name: string
+}
 
-    public getState() {
+export interface IChat {
+    avatar: string | null
+    created_by: number
+    id: number
+    last_message: {
+        content: string
+        id: number
+        time: string
+        user: IProfile
+    }
+    time: string
+    title: string
+    unread_count: number
+}
+
+export interface IState {
+    chat?: {
+        id: number,
+        users: Array<IProfile>
+    },
+    chatList? : Array<IChat>
+    profile? : IProfile
+}
+
+class Store extends EventBus {
+    private state: IState = {}
+
+    public getState(): IState {
         return this.state
     }
 

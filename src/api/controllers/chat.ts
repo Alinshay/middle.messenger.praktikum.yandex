@@ -8,7 +8,9 @@ import { getChatId, getProfileId } from '../../utils/utils'
 class ChatController {
     public getChats() {
         return ChatAPI.getChats()
-            .then(({ response }) => store.set('chatList', parseChatList(JSON.parse(response))))
+            .then(({ response }) => {
+                store.set('chatList', parseChatList(JSON.parse(response)))
+            })
     }
 
     public createChat(title: string) {
@@ -16,11 +18,11 @@ class ChatController {
             .then(() => this.getChats())
     }
 
-    public addUserToChat(chatId: string, userName: string) {
+    public addUserToChat(chatId: number, userName: string) {
         return ChatAPI.addUserToChat(chatId, userName)
     }
 
-    public deleteUserFromChat(chatId: string, userName: string) {
+    public deleteUserFromChat(chatId: number, userName: string) {
         return ChatAPI.deleteUserFromChat(chatId, userName)
     }
 
@@ -31,7 +33,7 @@ class ChatController {
         if (chatId) {
             ChatAPI.getToken(chatId)
                 .then(({ response }) => {
-                    const { token } = JSON.parse(response)
+                    const { token } = JSON.parse(response as string)
                     const userId : number | undefined = getProfileId()
                     if (userId) {
                         this.socket = new WebSocket(`wss://ya-praktikum.tech/ws/chats/${userId}/${chatId}/${token}`)

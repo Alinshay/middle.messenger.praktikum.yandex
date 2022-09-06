@@ -1,9 +1,19 @@
 import ProfileApi from '../profile-api'
+import AuthAPI from '../auth-api'
 import store from '../../modules/store'
+
+interface IChangeInfo {
+    email: string
+    login: string
+    first_name: string
+    second_name: string
+    phone: string
+    display_name: string
+}
 
 class UserController {
     public getProfileInfo() {
-        return ProfileApi.request()
+        return AuthAPI.getProfileInfo()
             .then(({ response }) => store.set('profile', JSON.parse(response)))
     }
 
@@ -17,7 +27,7 @@ class UserController {
             .then(({ response }) => JSON.parse(response))
     }
 
-    public changeInfo(data: any) {
+    public changeInfo(data: IChangeInfo) {
         return ProfileApi.changeInfo(data)
             .then(({ response }) => JSON.parse(response))
     }

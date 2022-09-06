@@ -4,11 +4,11 @@ import { getProfileId } from '../../utils/utils'
 import Route from './route'
 
 export class Router {
-    private history : History = window.history
+    private history: History = window.history
 
     private _currentRoute: string | null = null
 
-    private routes : Record<string, any> = []
+    private routes: Array<Route> = []
 
     private static __instance: Router
 
@@ -22,7 +22,7 @@ export class Router {
     }
 
     use(pathname: string, block: Block) {
-        const route = new Route(pathname, block, { rootQuery: 'main' })
+        const route = new Route({ pathname, view: block, props: { rootQuery: 'main' } })
         this.routes.push(route)
 
         return this
@@ -41,9 +41,14 @@ export class Router {
         }
 
         const path = window?.location?.pathname
-        if (!isAuth && path !== '/signup') {
-            this._onRoute('/')
-            this._currentRoute = '/'
+        if (!isAuth) {
+            if (path !== '/signup') {
+                this._onRoute('/')
+                this._currentRoute = '/'
+            }
+        } else if (path === '/signup' || path === '/') {
+            this._onRoute('/messenger')
+            this._currentRoute = '/messenger'
         } else {
             this._onRoute(path)
             this._currentRoute = path
@@ -58,12 +63,13 @@ export class Router {
         }
 
         if (this._currentRoute) {
+            // @ts-ignore
             this.getRoute(this._currentRoute).leave()
         }
 
         this._currentRoute = pathname
 
-        route.render(route, pathname)
+        route.render()
     }
 
     go(pathname: string) {
@@ -76,6 +82,6 @@ export class Router {
     }
 
     getRoute(pathname: string) {
-        return this.routes.find((route : Route) => route.match(pathname)) || this.routes.find((route: Route) => route.match('*'))
+        return this.routes.find((route: Route) => route.match(pathname)) || this.routes.find((route: Route) => route.match('*'))
     }
 }

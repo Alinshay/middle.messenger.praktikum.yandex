@@ -5,7 +5,7 @@ import type Button from '../../components/button/Button'
 import tpl from './tpl.hbs'
 import './style.css'
 
-interface errorPageProps {
+interface IErrorPageProps {
     button: Button
     titleWithMan: Title
     title: Title
@@ -15,7 +15,7 @@ interface errorPageProps {
 }
 
 export default class ErrorPage extends Block {
-    constructor(props: errorPageProps) {
+    constructor(props: IErrorPageProps) {
         super('div', props)
     }
 

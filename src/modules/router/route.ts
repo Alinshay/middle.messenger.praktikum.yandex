@@ -5,6 +5,12 @@ function isEqual(lhs: string, rhs: string) {
     return lhs === rhs
 }
 
+export interface IRoute {
+    pathname: string
+    view: Block
+    props: Record<string, any>
+}
+
 export default class Route {
     private _pathname : string
 
@@ -14,11 +20,11 @@ export default class Route {
 
     private _props : Record<string, any>
 
-    constructor(pathname : string, view : Block, props : Record<string, any>) {
-        this._pathname = pathname
-        this._blockClass = view
+    constructor(props: IRoute) {
+        this._pathname = props.pathname
+        this._blockClass = props.view
         this._block = null
-        this._props = props
+        this._props = props.props
     }
 
     navigate(pathname : string) {

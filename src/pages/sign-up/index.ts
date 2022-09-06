@@ -30,10 +30,10 @@ const loginInput = new Input({
     },
     events: {
         focus: () => {
-            validation(loginInput.getContent(), loginRegexp)
+            validation(loginInput.getContent() as HTMLInputElement, loginRegexp)
         },
         blur: () => {
-            validation(loginInput.getContent(), loginRegexp)
+            validation(loginInput.getContent() as HTMLInputElement, loginRegexp)
         },
         input: () => {
             resetValidation(loginInput.getContent())
@@ -49,10 +49,10 @@ const emailInput = new Input({
     },
     events: {
         focus: () => {
-            validation(emailInput.getContent(), emailRegexp)
+            validation(emailInput.getContent() as HTMLInputElement, emailRegexp)
         },
         blur: () => {
-            validation(emailInput.getContent(), emailRegexp)
+            validation(emailInput.getContent() as HTMLInputElement, emailRegexp)
         },
         input: () => {
             resetValidation(emailInput.getContent())
@@ -68,10 +68,10 @@ const firstNameInput = new Input({
     },
     events: {
         focus: () => {
-            validation(firstNameInput.getContent(), nameRegexp)
+            validation(firstNameInput.getContent() as HTMLInputElement, nameRegexp)
         },
         blur: () => {
-            validation(firstNameInput.getContent(), nameRegexp)
+            validation(firstNameInput.getContent() as HTMLInputElement, nameRegexp)
         },
         input: () => {
             resetValidation(firstNameInput.getContent())
@@ -87,10 +87,10 @@ const secondNameInput = new Input({
     },
     events: {
         focus: () => {
-            validation(secondNameInput.getContent(), nameRegexp)
+            validation(secondNameInput.getContent() as HTMLInputElement, nameRegexp)
         },
         blur: () => {
-            validation(secondNameInput.getContent(), nameRegexp)
+            validation(secondNameInput.getContent() as HTMLInputElement, nameRegexp)
         },
         input: () => {
             resetValidation(secondNameInput.getContent())
@@ -106,10 +106,10 @@ const phoneNumberInput = new Input({
     },
     events: {
         focus: () => {
-            validation(phoneNumberInput.getContent(), phoneRegexp)
+            validation(phoneNumberInput.getContent() as HTMLInputElement, phoneRegexp)
         },
         blur: () => {
-            validation(phoneNumberInput.getContent(), phoneRegexp)
+            validation(phoneNumberInput.getContent() as HTMLInputElement, phoneRegexp)
         },
         input: () => {
             resetValidation(phoneNumberInput.getContent())
@@ -126,10 +126,10 @@ const passwordInput = new Input({
     },
     events: {
         focus: () => {
-            validation(passwordInput.getContent(), passwordRegexp)
+            validation(passwordInput.getContent() as HTMLInputElement, passwordRegexp)
         },
         blur: () => {
-            validation(passwordInput.getContent(), passwordRegexp)
+            validation(passwordInput.getContent() as HTMLInputElement, passwordRegexp)
         },
         input: () => {
             resetValidation(passwordInput.getContent())
@@ -206,12 +206,12 @@ export default new SignUp({
     events: {
         submit: (event) => {
             event.preventDefault()
-            const isValid = validation(loginInput.getContent(), loginRegexp)
-                && validation(emailInput.getContent(), emailRegexp)
-                && validation(firstNameInput.getContent(), nameRegexp)
-                && validation(secondNameInput.getContent(), nameRegexp)
-                && validation(phoneNumberInput.getContent(), phoneRegexp)
-                && validation(passwordInput.getContent(), passwordRegexp)
+            const isValid = validation(loginInput.getContent() as HTMLInputElement, loginRegexp)
+                && validation(emailInput.getContent() as HTMLInputElement, emailRegexp)
+                && validation(firstNameInput.getContent() as HTMLInputElement, nameRegexp)
+                && validation(secondNameInput.getContent() as HTMLInputElement, nameRegexp)
+                && validation(phoneNumberInput.getContent() as HTMLInputElement, phoneRegexp)
+                && validation(passwordInput.getContent() as HTMLInputElement, passwordRegexp)
                 && (passwordInput.getContent() as HTMLInputElement).value
                 === (repeatPasswordInput.getContent() as HTMLInputElement).value
 

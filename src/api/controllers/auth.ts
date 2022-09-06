@@ -5,6 +5,20 @@ import { router } from '../../index'
 import UserController from './profile'
 import ChatController from './chat'
 
+interface ISignIn {
+    login: string
+    password: string
+}
+
+interface ISignUp {
+    email: string
+    login: string
+    first_name: string
+    second_name: string
+    phone: string
+    password: string
+}
+
 class AuthController {
     public logout() {
         authApi.logout()
@@ -14,7 +28,7 @@ class AuthController {
             })
     }
 
-    public signIn(data: Record<string, any>) {
+    public signIn(data: ISignIn) {
         authApi.signIn(data)
             .then(() => {
                 UserController.getProfileInfo()
@@ -27,7 +41,7 @@ class AuthController {
             })
     }
 
-    public signUp(data: Record<string, any>) {
+    public signUp(data: ISignUp) {
         authApi.signUp(data)
             .then(() => {
                 UserController.getProfileInfo()

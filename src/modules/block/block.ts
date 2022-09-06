@@ -28,7 +28,6 @@ export default class Block {
 
     constructor(tagName : string = 'div', propsAndChildren : Record<string, any> = {}) {
         const { children, props } = this._getChildren(propsAndChildren)
-
         const eventBus = new EventBus()
         this._meta = {
             tagName,

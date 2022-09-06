@@ -1,20 +1,19 @@
 import HTTP from '../modules/http-transport/http-transport'
 
-const chatAPIInstance = new HTTP()
+const chatAPIInstance = new HTTP('https://ya-praktikum.tech/api/v2/user')
+
+interface IChangeInfo {
+    email: string
+    login: string
+    first_name: string
+    second_name: string
+    phone: string
+    display_name: string
+}
 
 export class ProfileAPI {
-    public request() {
-        return chatAPIInstance.get('https://ya-praktikum.tech/api/v2/auth/user', {
-            method: 'GET',
-            headers: {
-                'content-type': 'application/json',
-            },
-        })
-    }
-
     public putAvatar(formData: FormData) {
-        return chatAPIInstance.put('https://ya-praktikum.tech/api/v2/user/profile/avatar', {
-            method: 'PUT',
+        return chatAPIInstance.put('/profile/avatar', {
             headers: {
                 accept: 'application/xml',
             },
@@ -23,22 +22,20 @@ export class ProfileAPI {
     }
 
     public changePassword(oldPassword: string, newPassword: string) {
-        return chatAPIInstance.put('https://ya-praktikum.tech/api/v2/user/password', {
-            method: 'PUT',
+        return chatAPIInstance.put('/password', {
             headers: {
                 'content-type': 'application/json',
             },
-            data: JSON.stringify({ oldPassword, newPassword }),
+            data: { oldPassword, newPassword },
         })
     }
 
-    public changeInfo(data: any) {
-        return chatAPIInstance.put('https://ya-praktikum.tech/api/v2/user/profile', {
-            method: 'PUT',
+    public changeInfo(data: IChangeInfo) {
+        return chatAPIInstance.put('/profile', {
             headers: {
                 'content-type': 'application/json',
             },
-            data: JSON.stringify(data),
+            data,
         })
     }
 }

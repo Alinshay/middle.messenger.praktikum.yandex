@@ -10,7 +10,7 @@ import ChatController from '../../api/controllers/chat'
 import tpl from './tpl.hbs'
 import './style.css'
 
-interface chatProps {
+interface IChatProps {
     leftMenu: LeftMenu
     chatMenu: ChatMenu
     messageList: MessageList
@@ -28,7 +28,7 @@ interface chatProps {
 }
 
 export default class Chat extends Block {
-    constructor(props: chatProps) {
+    constructor(props: IChatProps) {
         super('div', props)
     }
 
