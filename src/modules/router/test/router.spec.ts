@@ -8,11 +8,12 @@ import Block from "../../block/block";
 describe('Router', () => {
     before(() => {
         const dom = new JSDOM(
-            '<html></html>',
+            '<html lang="ru"></html>',
             { url: 'http://localhost/' },
         )
-        global.window = dom.window
-        global.document = dom.window.document
+        const globalObj: any = global
+        globalObj.window = dom.window
+        globalObj.document = dom.window.document
     })
 
     it('Router go', () => {

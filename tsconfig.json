@@ -1,15 +1,15 @@
 {
   "compilerOptions": {
-    "module": "system",
     "moduleResolution" : "node",
     "target": "es2017",
     "strict": true,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "removeComments": true,
     "preserveConstEnums": true,
-    "outFile": "../../built/local/tsc.js",
+    "allowSyntheticDefaultImports": true,
+    "outDir": "./dist/",
     "sourceMap": true
   },
   "include": ["src/**/*.ts"],

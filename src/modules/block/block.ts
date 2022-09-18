@@ -19,7 +19,7 @@ export default class Block {
 
     private _id : string
 
-    protected props: Record<string, any>
+    public props: Record<string, any>
 
     // eslint-disable-next-line no-use-before-define
     protected children: Record<string, Block>
