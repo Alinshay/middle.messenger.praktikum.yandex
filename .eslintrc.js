@@ -45,5 +45,9 @@ module.exports = {
     'class-methods-use-this': 'off',
     'import/no-unresolved': 'off',
     'import/extensions': 'off',
+    'import/prefer-default-export': 'off',
+    'no-continue': 'off',
+    'no-use-before-define': 'off',
+    'max-len': ['error', { 'code': 200 }],
   },
 };

@@ -22,12 +22,12 @@ export default class EventBus {
         )
     }
 
-    emit(event: string, ...args: Array<any>): void {
+    emit(event: string, ...args: Array<unknown>): void {
         if (!this.listeners[event]) {
             throw new Event(`Нет события: ${event}`)
         }
 
-        this.listeners[event].forEach((listener: any) => {
+        this.listeners[event].forEach((listener) => {
             listener(...args)
         })
     }

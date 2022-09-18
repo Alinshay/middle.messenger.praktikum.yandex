@@ -1,21 +1,25 @@
-import render from './utils/renderDOM'
-import SignInPage from './pages/sing-in'
-import SignUpPage from './pages/sign-up'
-import Error404 from './pages/error-page'
-import ChatPage from './pages/chat'
+import { Router } from './modules/router/router'
+import SignIn from './pages/sing-in/index'
+import SignUp from './pages/sign-up'
+import Chat from './pages/chat'
+import ErrorPage from './pages/error-page'
 import {
-    ProfileInfoPage,
     ProfileChangeDataPage,
     ProfileChangePasswordPage,
+    ProfileInfoPage,
 } from './pages/profile'
+import ProfileController from './api/controllers/profile'
 
-switch (window.location.pathname) {
-    case '/': render('main', SignInPage); break
-    case '/signin': render('main', SignInPage); break
-    case '/signup': render('main', SignUpPage); break
-    case '/chat': render('main', ChatPage); break
-    case '/profile': render('main', ProfileInfoPage); break
-    case '/profile/data-edit': render('main', ProfileChangeDataPage); break
-    case '/profile/password-edit': render('main', ProfileChangePasswordPage); break
-    default: render('main', Error404)
-}
+export const router = new Router()
+ProfileController.getProfileInfo()
+    .then(() => {
+        router
+            .use('/settings', ProfileInfoPage)
+            .use('/settings-info', ProfileChangeDataPage)
+            .use('/settings-password', ProfileChangePasswordPage)
+            .use('/messenger', Chat)
+            .use('/', SignIn)
+            .use('/signup', SignUp)
+            .use('*', ErrorPage)
+            .start()
+    })

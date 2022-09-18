@@ -1,78 +1,47 @@
-import SearchPanel from '../../components/search-panel/SearchPanel'
-import LeftMenu from '../../components/left-menu/LeftMenu'
-import ChatList from '../../components/chat-list/ChatList'
-import chats from '../../stub/chat-list'
-import ChatMenu from '../../components/chat-menu/ChatMenu'
+import ChatMenu, { ChatMenu as ChatMenuType } from '../../components/chat-menu/ChatMenu'
 import MessageList from '../../components/message-list/MessageList'
 import MessageInput from '../../components/message-input/MessageInput'
-import SearchInput from '../../components/search-input/ChatList'
-import data from '../../stub/message-list'
 import Input from '../../components/input/Input'
 import ButtonSimple from '../../components/button-simple/ButtonSimple'
 import { resetValidation, validation } from '../../utils/validation'
+import chatController from '../../api/controllers/chat'
 
 import Chat from './Chat'
 import contextMenu from './context-menu'
+import { contextMenu2 } from './context-menu/context-menu'
+import { leftMenu, popup } from './left-menu'
+import { popupAdd, popupDelete } from './context-menu/popup'
 
+contextMenu2.hide()
 contextMenu.hide()
 
-const messageList = new MessageList({
-    data,
+export const messageList = new MessageList({
+    data: [],
     attr: {
         class: 'messages',
     },
 })
 
 const chatMenu = new ChatMenu({
-    name: 'Lex',
+    name: '',
+    button: new ButtonSimple({
+        text: '',
+        attr: {
+            class: 'chat-menu__button',
+            type: 'button',
+        },
+        events: {
+            click: () => {
+                if (contextMenu2.getContent().style.display === 'none') {
+                    contextMenu2.show()
+                } else {
+                    contextMenu2.hide()
+                }
+            },
+        },
+    }),
     attr: {
         class: 'chat-menu',
-    },
-})
-
-const chatList = new ChatList({
-    chats,
-    attr: {
-        class: 'chat-list',
-    },
-})
-
-const searchInput = new SearchInput({
-    attr: {
-        class: 'search-panel__input',
-        placeholder: 'search',
-    },
-    events: {
-        focus: () => {
-            chatList.setProps({ mode: 'search' })
-        },
-        blur: () => {
-            chatList.setProps({ mode: '', chats })
-        },
-        input: () => {
-            const searchQuery = (searchInput.getContent() as HTMLInputElement).value
-            const filteredChatList = chats.chatList.filter((item) => {
-                const itemName = item.name.toUpperCase()
-                return itemName.includes(searchQuery.toUpperCase())
-            })
-            chatList.setProps({ chats: { chatList: filteredChatList } })
-        },
-    },
-})
-
-const searchPanel = new SearchPanel({
-    profileRef: '/profile',
-    input: searchInput,
-    attr: {
-        class: 'search-panel',
-    },
-})
-
-const leftMenu = new LeftMenu({
-    searchPanel,
-    chatList,
-    attr: {
-        class: 'left-menu',
     },
 })
 
@@ -84,7 +53,7 @@ const input = new Input({
     },
     events: {
         blur: () => {
-            const isValid = validation(input.getContent(), /^.+$/)
+            const isValid = validation(input.getContent() as HTMLInputElement, /^.+$/)
             if (!isValid) {
                 // eslint-disable-next-line no-use-before-define
                 messageInput.getContent().classList.add('error')
@@ -131,23 +100,32 @@ const messageInput = new MessageInput({
     events: {
         submit: (event: MouseEvent) => {
             event.preventDefault()
-            const result = {
-                message: (input.getContent() as HTMLInputElement).value,
+            const inputElem : HTMLInputElement = input.getContent() as HTMLInputElement
+            const isValid = validation(inputElem, /^.+$/)
+            if (isValid) {
+                (chatController.socket as WebSocket).send(JSON.stringify({
+                    content: inputElem.value,
+                    type: 'message',
+                }))
+                chatController.getChats()
+                inputElem.value = ''
+                messageList.getContent().scrollTop = messageList.getContent().scrollHeight
             }
-            const isValid = validation(input.getContent(), /^.+$/)
-            // eslint-disable-next-line no-console, no-unused-expressions
-            isValid ? console.log(result) : console.log('invalid')
         },
     },
 })
 
 export default new Chat({
     leftMenu,
-    chatMenu,
+    chatMenu: chatMenu as ChatMenuType,
     messageList,
     messageInput,
-    activeChat: '1',
+    activeChat: '',
     contextMenu,
+    contextMenu2,
+    popupAddUser: popupAdd,
+    popupCreateChat: popup,
+    popupDeleteUser: popupDelete,
     attr: {
         class: 'page',
     },

@@ -1,5 +1,6 @@
 import Button from '../../components/button/Button'
 import Title from '../../components/title/Title'
+import { router } from '../../index'
 
 import ErrorPage from './ErrorPage'
 
@@ -10,7 +11,7 @@ const button = new Button({
     },
     events: {
         click: () => {
-            window.location.pathname = '/chat'
+            router.goBack()
         },
     },
 })

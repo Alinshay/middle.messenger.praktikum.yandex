@@ -1,26 +1,27 @@
-import Block from '../../modules/block'
+import Block from '../../modules/block/block'
 import type SearchInput from '../search-input/ChatList'
+import ButtonSimple from '../button-simple/ButtonSimple'
 
 import tpl from './tpl.hbs'
 import './style.css'
 
-interface searchPanelProps {
-    profileRef: string
+interface ISearchPanelProps {
     input: SearchInput
+    button: ButtonSimple
     attr?: {
         class?: string
     }
 }
 
 export default class SearchPanel extends Block {
-    constructor(props: searchPanelProps) {
+    constructor(props: ISearchPanelProps) {
         super('nav', props)
     }
 
     render() {
         return this.compile(tpl, {
-            profileRef: this.props.profileRef,
             input: this.props.input,
+            button: this.props.button,
         })
     }
 }

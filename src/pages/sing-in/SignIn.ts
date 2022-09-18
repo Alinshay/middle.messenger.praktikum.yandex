@@ -1,4 +1,4 @@
-import Block from '../../modules/block'
+import Block from '../../modules/block/block'
 import type Button from '../../components/button/Button'
 import type Title from '../../components/title/Title'
 import type Input from '../../components/input/Input'
@@ -7,7 +7,7 @@ import type TextWithLink from '../../components/text-with-link/TextWithLink'
 import tpl from './tpl.hbs'
 import '../../style.css'
 
-interface signInProps {
+interface ISignInProps {
     title: Title
     loginInput: Input
     passwordInput: Input
@@ -20,7 +20,7 @@ interface signInProps {
 }
 
 export default class SignIn extends Block {
-    constructor(props: signInProps) {
+    constructor(props: ISignInProps) {
         super('div', props)
     }
 

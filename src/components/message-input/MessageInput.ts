@@ -1,11 +1,11 @@
-import Block from '../../modules/block'
+import Block from '../../modules/block/block'
 import type Input from '../input/Input'
 import type ButtonSimple from '../button-simple/ButtonSimple'
 
 import tpl from './tpl.hbs'
 import './style.css'
 
-interface messageInputProps {
+interface IMessageInputProps {
     input: Input
     attr: {
         class: string
@@ -18,7 +18,7 @@ interface messageInputProps {
 }
 
 export default class MessageInput extends Block {
-    constructor(props: messageInputProps) {
+    constructor(props: IMessageInputProps) {
         super('form', props)
     }
 

@@ -30,6 +30,6 @@ export default new ContextMenu({
     button2,
     button3,
     attr: {
-        class: 'context-menu',
+        class: 'context-menu_bottom',
     },
 })

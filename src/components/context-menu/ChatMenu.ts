@@ -1,10 +1,10 @@
-import Block from '../../modules/block'
+import Block from '../../modules/block/block'
 import ButtonSimple from '../button-simple/ButtonSimple'
 
 import tpl from './tpl.hbs'
 import './style.css'
 
-interface chatMenuProps {
+interface IChatMenuProps {
     button1: ButtonSimple
     button2: ButtonSimple
     button3?: ButtonSimple
@@ -14,7 +14,7 @@ interface chatMenuProps {
 }
 
 export default class ContextMenu extends Block {
-    constructor(props: chatMenuProps) {
+    constructor(props: IChatMenuProps) {
         super('div', props)
     }
 

@@ -1,23 +1,25 @@
-import Block from '../../../modules/block'
+import Block from '../../../modules/block/block'
 import type Title from '../../../components/title/Title'
 import type ButtonFullScreen from '../../../components/button-full-screen/ButtonFullScreen'
-import type AvatarLg from '../../../components/avatar-lg/AvatarLg'
+import { AvatarLg } from '../../../components/avatar-lg/AvatarLg'
+import Popup from '../../../components/popup/Popup'
 
 import tpl from './tpl.hbs'
 import './style.css'
 
-interface profileLayoutProps {
-    profileTitleName: Title
+interface IProfileLayoutProps {
+    profileTitleName?: Title
     buttonFullScreen: ButtonFullScreen
     content: Block
     avatarLg: AvatarLg
+    popup?: Popup
     attr?: {
         class?: string
     }
 }
 
 export default class ProfileLayout extends Block {
-    constructor(props: profileLayoutProps) {
+    constructor(props: IProfileLayoutProps) {
         super('div', props)
     }
 
@@ -27,6 +29,7 @@ export default class ProfileLayout extends Block {
             avatarLg: this.props.avatarLg,
             profileTitleName: this.props.profileTitleName,
             content: this.props.content,
+            popup: this.props.popup,
         })
     }
 }

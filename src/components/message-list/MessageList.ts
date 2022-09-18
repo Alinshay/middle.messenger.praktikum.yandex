@@ -1,9 +1,10 @@
-import Block from '../../modules/block'
+import Block from '../../modules/block/block'
 
 import tpl from './tpl.hbs'
+
 import './style.css'
 
-interface messageListProps {
+interface IMessageListProps {
     data: Array<{
         date: string,
         messages: Array<{
@@ -18,7 +19,7 @@ interface messageListProps {
 }
 
 export default class MessageList extends Block {
-    constructor(props: messageListProps) {
+    constructor(props: IMessageListProps) {
         super('div', props)
     }
 

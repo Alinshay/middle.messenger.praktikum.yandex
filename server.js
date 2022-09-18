@@ -5,6 +5,8 @@ const PORT = process.env.PORT || 3000
 
 app.use(express.static('build'))
 
+app.use('/*', (req, res) => {res.sendfile('build/index.html')})
+
 app.listen(PORT, () => {
     console.log(`Example app listening on port ${PORT}!`)
 })

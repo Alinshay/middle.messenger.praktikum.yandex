@@ -1,10 +1,10 @@
-import Block from '../../../modules/block'
+import Block from '../../../modules/block/block'
 import type Button from '../../../components/button/Button'
 import type Table from '../../../components/table/Table'
 
 import tpl from './tpl.hbs'
 
-interface profileInfoProps {
+interface IProfileInfoProps {
     profileTable: Table
     changeDataButton: Button
     changePasswordButton: Button
@@ -15,7 +15,7 @@ interface profileInfoProps {
 }
 
 export default class ProfileInfo extends Block {
-    constructor(props: profileInfoProps) {
+    constructor(props: IProfileInfoProps) {
         super('div', props)
     }
 

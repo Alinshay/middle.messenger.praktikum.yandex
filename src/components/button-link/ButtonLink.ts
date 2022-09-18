@@ -1,20 +1,21 @@
-import Block from '../../modules/block'
+import Block from '../../modules/block/block'
 
 import tpl from './tpl.hbs'
 import './style.css'
 
-interface buttonLinkProps {
+interface IButtonLinkProps {
     title: string,
     mode?: string,
     attr?: {
         class?: string
         href?: string
     }
+    events?: { click?: (event: MouseEvent) => void }
 }
 
 export default class ButtonLink extends Block {
-    constructor(props: buttonLinkProps) {
-        super('a', props)
+    constructor(props: IButtonLinkProps) {
+        super('button', props)
     }
 
     render() {

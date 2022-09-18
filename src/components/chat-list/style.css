@@ -1,5 +1,5 @@
 .chat-list {
-	height: 90%;
+	max-height: 90%;
 	overflow: scroll;
 	padding: 0 10px;
 }
@@ -80,4 +80,8 @@
 	width: 47px;
 	border-radius: 50%;
 	margin: 12px 0;
+}
+
+.active {
+	background: rgb(133 96 188 / 50%);
 }

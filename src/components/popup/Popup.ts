@@ -1,6 +1,6 @@
 import Handlebars from 'handlebars'
 
-import Block from '../../modules/block'
+import Block from '../../modules/block/block'
 import type Title from '../title/Title'
 import type Button from '../button/Button'
 import type Input from '../input/Input'
@@ -9,7 +9,7 @@ import type ButtonLink from '../button-link/ButtonLink'
 import tpl from './tpl.hbs'
 import './style.css'
 
-interface popupProps {
+interface IPopupProps {
     title: Title
     typeOfValue: string
     button: Button
@@ -19,11 +19,15 @@ interface popupProps {
     buttonLink?: ButtonLink
     attr: {
         class: string
+    },
+    events?: {
+        click?: (event: MouseEvent) => void
+        submit?: (event: MouseEvent) => void
     }
 }
 
 export default class Popup extends Block {
-    constructor(props: popupProps) {
+    constructor(props: IPopupProps) {
         super('div', props)
     }
 

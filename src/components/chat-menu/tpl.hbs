@@ -1,5 +1,9 @@
 <div class="chat-menu__info-wrapper">
     <div class="info__avatar"></div>
-    <h2 class="info__name">{{name}}</h2>
+    <h2 class="info__name">
+    {{#each name}}
+        {{{first_name}}}
+    {{/each}}
+    </h2>
 </div>
-<button class="chat-menu__button"></button>
+{{{button}}}

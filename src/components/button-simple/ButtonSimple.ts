@@ -1,10 +1,10 @@
-import Block from '../../modules/block'
+import Block from '../../modules/block/block'
 
 import tpl from './tpl.hbs'
 
-interface buttonProps {
+interface IButtonProps {
     text?: string
-    attr: {
+    attr?: {
         class?: string
         type?: string
     }
@@ -12,7 +12,7 @@ interface buttonProps {
 }
 
 export default class ButtonSimple extends Block {
-    constructor(props: buttonProps) {
+    constructor(props: IButtonProps) {
         super('button', props)
     }
 

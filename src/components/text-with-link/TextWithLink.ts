@@ -1,24 +1,23 @@
-import Block from '../../modules/block'
+import Block from '../../modules/block/block'
 
 import tpl from './tpl.hbs'
 import './style.css'
 
-interface textWithLinkProps {
+interface ITextWithLinkProps {
     text: string
-    linkRef: string
     linkText: string
     attr: { class: string }
+    events?: { click?: (event: MouseEvent) => void }
 }
 
 export default class TextWithLink extends Block {
-    constructor(props: textWithLinkProps) {
+    constructor(props: ITextWithLinkProps) {
         super('p', props)
     }
 
     render() {
         return this.compile(tpl, {
             text: this.props.text,
-            linkRef: this.props.linkRef,
             linkText: this.props.linkText,
         })
     }
