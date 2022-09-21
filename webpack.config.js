@@ -43,10 +43,10 @@ module.exports = {
                 test: /\.hbs$/,
                 loader: 'handlebars-loader',
                 options: {
-                    runtime: path.resolve(__dirname, 'src/helpers.ts'),
+                    runtime: path.resolve(__dirname, 'src/helpers.js'),
                 },
             },
         ],
     },
-    plugins: [new HtmlWebpackPlugin({ template: './src/index.html', inject: false  })],
+    plugins: [new HtmlWebpackPlugin({ template: './src/index.html', inject: false })],
 }

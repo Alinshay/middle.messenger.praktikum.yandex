@@ -9,7 +9,6 @@ const PORT = process.env.PORT || 3000
 
 const compiler = webpack(config)
 
-
 app.use(webpackDevMiddleware(compiler, {
         publicPath: config.output.publicPath,
     })
@@ -22,11 +21,3 @@ app.use('/*', (req, res) => {res.sendFile( path.resolve(__dirname, 'dist/index.h
 app.listen(PORT, () => {
     console.log(`Example app listening on port ${PORT}!`)
 })
-
-
-
-
-
-
-
-

@@ -1,5 +1,8 @@
-FROM nginx
-COPY dist /usr/share/nginx/html
-COPY conf.template /etc/nginx/conf.d/conf.template
-COPY nginx.conf /etc/nginx/nginx.conf
-CMD /bin/bash -c "envsubst '\$PORT' < /etc/nginx/conf.d/conf.template > /etc/nginx/conf.d/default.conf" && nginx -g 'daemon off;'
+FROM node:16
+WORKDIR /usr/src/app
+COPY package*.json ./
+RUN npm i --legacy-peer-deps
+COPY . .
+RUN npm run build
+EXPOSE 3000
+CMD [ "node", "server.js" ]

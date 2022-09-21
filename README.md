@@ -14,7 +14,7 @@
 
 ### Демо [Heroku](https://practicum-chat.herokuapp.com/)
 
-###Стек:
+### Стек:
 * TypeScript
 * Webpack
 * Chai & Mocha
