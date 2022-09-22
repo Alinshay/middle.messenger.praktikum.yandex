@@ -1,4 +1,5 @@
 import { Router } from './modules/router/router'
+import './helpers'
 import SignIn from './pages/sing-in/index'
 import SignUp from './pages/sign-up'
 import Chat from './pages/chat'
