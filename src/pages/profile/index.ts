@@ -45,9 +45,10 @@ export const popup = new Popup({
     attr: {
         class: 'background-blur',
     },
+    className: 'select-file-popup',
     events: {
         click: (event) => {
-            const popupContent = document.querySelector('.popup')
+            const popupContent = document.querySelector('.select-file-popup')
             const withinBoundaries = event.composedPath().includes(popupContent as Element)
             if (!withinBoundaries) {
                 (popupInput.getContent() as HTMLInputElement).value = ''

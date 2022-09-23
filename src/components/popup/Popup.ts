@@ -1,5 +1,3 @@
-import Handlebars from 'handlebars'
-
 import Block from '../../modules/block/block'
 import type Title from '../title/Title'
 import type Button from '../button/Button'
@@ -24,6 +22,7 @@ interface IPopupProps {
         click?: (event: MouseEvent) => void
         submit?: (event: MouseEvent) => void
     }
+    className: string
 }
 
 export default class Popup extends Block {
@@ -40,12 +39,7 @@ export default class Popup extends Block {
             value: this.props.value,
             button: this.props.button,
             errorText: this.props.errorText,
+            className: this.props.className,
         })
     }
 }
-
-Handlebars.registerHelper('isInput', (value) => value === 'input')
-
-Handlebars.registerHelper('isText', (value) => value === 'text')
-
-Handlebars.registerHelper('isButton', (value) => value === 'button')

@@ -1,5 +1,3 @@
-import Handlebars from 'handlebars'
-
 import Block from '../../modules/block/block'
 import type Input from '../input/Input'
 
@@ -40,7 +38,3 @@ export default class Table extends Block {
         })
     }
 }
-
-Handlebars.registerHelper('isData', (value) => value === 'data')
-
-Handlebars.registerHelper('isPassword', (value) => value === 'password')

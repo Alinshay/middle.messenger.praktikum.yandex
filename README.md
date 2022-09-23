@@ -1,24 +1,33 @@
 ## Приложение Чат
-### Функционал: 
+### Функционал:
 * регистрация
 * вход по логину/паролю
 * валидация полей формы
 * поиск по чатам (фильтрует список чатов)
 * возможность добавить чат
-* возможность добавить пользователя в чат 
+* возможность добавить пользователя в чат
 * возможность удалить пользователя из чата
-* возможность обмениваться сообщениями в чате 
+* возможность обмениваться сообщениями в чате
 * возможность изменить аватар, данные, пароль пользователя в Профиле
 
-### Дизайн
-[Figma](https://www.figma.com/file/WVvYZRy8t0ON5iT4JehrOz/Practicum-Chat?node-id=0%3A1)
+### Дизайн [Figma](https://www.figma.com/file/WVvYZRy8t0ON5iT4JehrOz/Practicum-Chat?node-id=0%3A1)
 
-### Деплой
-[Netlify](https://poetic-fudge-5dedb2.netlify.app)
+### Демо [Heroku](https://practicum-chat.herokuapp.com/)
+
+### Стек:
+* TypeScript
+* Webpack
+* Chai & Mocha
+* Eslint
+* Stylelint
+* Husky
+* Docker
+
 
 ### Скрипты:
 * start – запуск проекта (дев-сервер)
-* build – сборка дистрибутива
+* dev – сборка дистрибутива development
+* build – сборка дистрибутива production
 * test - запуск unit-тестов
 * eslint - проверка ESlint для ts файлов
 * eslint:fix - исправление ошибок ESlint

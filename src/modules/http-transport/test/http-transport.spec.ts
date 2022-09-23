@@ -5,17 +5,20 @@ import sinon from 'sinon'
 import HTTP from '../http-transport'
 
 describe('HTTPTransport', () => {
+    const globalObj: any = global
+
     beforeEach(() => {
         const dom = new JSDOM(
-            '<html></html>',
+            '<html lang="ru"></html>',
             { url: 'http://localhost/'},
         )
-        global.window = dom.window
-        global.document = dom.window.document
-        global.XMLHttpRequest = sinon.useFakeXMLHttpRequest()
-        const requests = global.XMLHttpRequest.requests = []
 
-        global.XMLHttpRequest.onCreate = function (xhr: XMLHttpRequest) {
+        globalObj.window = dom.window
+        globalObj.document = dom.window.document
+        globalObj.XMLHttpRequest = sinon.useFakeXMLHttpRequest()
+        const requests = globalObj.XMLHttpRequest.requests = []
+
+        globalObj.XMLHttpRequest.onCreate = function (xhr: XMLHttpRequest) {
             requests.push(xhr)
         }
     })
@@ -25,10 +28,10 @@ describe('HTTPTransport', () => {
 
         chatAPIInstance.get('https://sample-url.com', {})
 
-        expect(global.XMLHttpRequest.requests[0].method).to.eq('GET')
-        expect(global.XMLHttpRequest.requests[0].url).to.eq('https://sample-url.com?')
-        expect(global.XMLHttpRequest.requests[0].withCredentials).to.eq(true)
-        expect(global.XMLHttpRequest.requests.length).to.eq(1)
+        expect(globalObj.XMLHttpRequest.requests[0].method).to.eq('GET')
+        expect(globalObj.XMLHttpRequest.requests[0].url).to.eq('https://sample-url.com?')
+        expect(globalObj.XMLHttpRequest.requests[0].withCredentials).to.eq(true)
+        expect(globalObj.XMLHttpRequest.requests.length).to.eq(1)
     })
 
     it('GET request with timeout', () => {
@@ -38,7 +41,7 @@ describe('HTTPTransport', () => {
             timeout: 3150,
         })
 
-        expect(global.XMLHttpRequest.requests[0].timeout).to.eq(3150)
+        expect(globalObj.XMLHttpRequest.requests[0].timeout).to.eq(3150)
     })
 
     it('GET request with params', () => {
@@ -50,10 +53,10 @@ describe('HTTPTransport', () => {
             data: { a: 1 },
         })
 
-        expect(global.XMLHttpRequest.requests[0].method).to.eq('GET')
-        expect(global.XMLHttpRequest.requests[0].url).to.eq('https://sample-url.com?a=1')
-        expect(global.XMLHttpRequest.requests[0].withCredentials).to.eq(true)
-        expect(global.XMLHttpRequest.requests.length).to.eq(1)
+        expect(globalObj.XMLHttpRequest.requests[0].method).to.eq('GET')
+        expect(globalObj.XMLHttpRequest.requests[0].url).to.eq('https://sample-url.com?a=1')
+        expect(globalObj.XMLHttpRequest.requests[0].withCredentials).to.eq(true)
+        expect(globalObj.XMLHttpRequest.requests.length).to.eq(1)
     })
 
     it('POST request', () => {
@@ -65,11 +68,11 @@ describe('HTTPTransport', () => {
             data: { a: 1 },
         })
 
-        expect(global.XMLHttpRequest.requests[0].method).to.eq('POST')
-        expect(global.XMLHttpRequest.requests[0].url).to.eq('https://sample-url.com')
-        expect(global.XMLHttpRequest.requests[0].withCredentials).to.eq(true)
-        expect(global.XMLHttpRequest.requests[0].requestBody).to.eq('{"a":1}')
-        expect(global.XMLHttpRequest.requests.length).to.eq(1)
+        expect(globalObj.XMLHttpRequest.requests[0].method).to.eq('POST')
+        expect(globalObj.XMLHttpRequest.requests[0].url).to.eq('https://sample-url.com')
+        expect(globalObj.XMLHttpRequest.requests[0].withCredentials).to.eq(true)
+        expect(globalObj.XMLHttpRequest.requests[0].requestBody).to.eq('{"a":1}')
+        expect(globalObj.XMLHttpRequest.requests.length).to.eq(1)
     })
 
     it('PUT request', () => {
@@ -81,11 +84,11 @@ describe('HTTPTransport', () => {
             data: { b: 3 },
         })
 
-        expect(global.XMLHttpRequest.requests[0].method).to.eq('PUT')
-        expect(global.XMLHttpRequest.requests[0].url).to.eq('https://sample-url.com')
-        expect(global.XMLHttpRequest.requests[0].withCredentials).to.eq(true)
-        expect(global.XMLHttpRequest.requests[0].requestBody.b).to.eq(3)
-        expect(global.XMLHttpRequest.requests.length).to.eq(1)
+        expect(globalObj.XMLHttpRequest.requests[0].method).to.eq('PUT')
+        expect(globalObj.XMLHttpRequest.requests[0].url).to.eq('https://sample-url.com')
+        expect(globalObj.XMLHttpRequest.requests[0].withCredentials).to.eq(true)
+        expect(globalObj.XMLHttpRequest.requests[0].requestBody.b).to.eq(3)
+        expect(globalObj.XMLHttpRequest.requests.length).to.eq(1)
     })
 
     it('DELETE request', () => {
@@ -97,10 +100,10 @@ describe('HTTPTransport', () => {
             data: { c: 4 },
         })
 
-        expect(global.XMLHttpRequest.requests[0].method).to.eq('DELETE')
-        expect(global.XMLHttpRequest.requests[0].url).to.eq('https://sample-url.com')
-        expect(global.XMLHttpRequest.requests[0].withCredentials).to.eq(true)
-        expect(global.XMLHttpRequest.requests[0].requestBody).to.eq('{"c":4}')
-        expect(global.XMLHttpRequest.requests.length).to.eq(1)
+        expect(globalObj.XMLHttpRequest.requests[0].method).to.eq('DELETE')
+        expect(globalObj.XMLHttpRequest.requests[0].url).to.eq('https://sample-url.com')
+        expect(globalObj.XMLHttpRequest.requests[0].withCredentials).to.eq(true)
+        expect(globalObj.XMLHttpRequest.requests[0].requestBody).to.eq('{"c":4}')
+        expect(globalObj.XMLHttpRequest.requests.length).to.eq(1)
     })
 })

@@ -48,9 +48,10 @@ export const popupAdd = new Popup({
     attr: {
         class: 'background-blur',
     },
+    className: 'add-user-popup',
     events: {
         click: (event) => {
-            const popupContent = document.querySelector('.popup')
+            const popupContent = document.querySelector('.add-user-popup')
             const withinBoundaries = event.composedPath().includes(popupContent as Element)
             if (!withinBoundaries) {
                 popupAdd.hide()
@@ -104,9 +105,10 @@ export const popupDelete = new Popup({
     attr: {
         class: 'background-blur',
     },
+    className: 'delete-user-popup',
     events: {
         click: (event) => {
-            const popupContent = document.querySelector('.popup')
+            const popupContent = document.querySelector('.delete-user-popup')
             const withinBoundaries = event.composedPath().includes(popupContent as Element)
             if (!withinBoundaries) {
                 popupDelete.hide()

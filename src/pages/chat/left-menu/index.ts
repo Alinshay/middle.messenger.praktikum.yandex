@@ -61,9 +61,10 @@ export const popup = new Popup({
     attr: {
         class: 'background-blur',
     },
+    className: 'create-chat-popup',
     events: {
         click: (event) => {
-            const popupContent = document.querySelector('.popup')
+            const popupContent = document.querySelector('.create-chat-popup')
             const withinBoundaries = event.composedPath().includes(popupContent as Element)
             if (!withinBoundaries) {
                 popup.hide()
